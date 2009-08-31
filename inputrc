@@ -1,0 +1,9 @@
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+$if Bash
+  Space: magic-space
+$endif
+
+set show-all-if-ambiguous on
+"\M-s": menu-complete

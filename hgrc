@@ -1,0 +1,8 @@
+[ui]
+username = Phillip DIXON <phil@dixon.gen.nz>
+
+[extensions]
+hgext.graphlog=
+hgext.convert=
+hgk=
+hgext.purge=
