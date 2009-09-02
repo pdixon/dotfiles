@@ -2,8 +2,8 @@ if [ -f ~/dotfiles/sh/env ]; then
    . ~/dotfiles/sh/env
 fi
 
-if [ -f ~/dotfiles/sh/config.bash ]; then
-   . ~/dotfiles/sh/config.bash
+if [ -f ~/dotfiles/sh/config.zsh ]; then
+   . ~/dotfiles/sh/config.zsh
 fi
 
 if [ -f ~/dotfiles/sh/aliases ]; then

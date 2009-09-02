@@ -42,4 +42,8 @@ BWHITE='\e[47m'
 # Note that the git branch is given a special color
 PS1="\n\u:\w \[$EBLACK\]\$(vcprompt)\[$NO_COLOR\] \n→ "
 
-
+# Increase history size
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+HISTFILESIZE=100000000
+HIST=1000000
