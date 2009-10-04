@@ -1,0 +1,3 @@
+#! /bin/sh
+# make open diff work the way mercurial expects.
+opendiff "$@" | cat
