@@ -1,16 +1,16 @@
 #! /bin/bash
 
 # Load resources
-if [ -f $HOME/.Xresources ]; then
-    xrdb -merge .Xresources
+if [ -f $HOME/dotfiles/Xresources ]; then
+    xrdb -merge $HOME/dotfiles/Xresources
 fi
-if [ -f $HOME/.Xmodmap ]; then
-    xmodmap $HOME/.Xmodmap
-fi
+#if [ -f $HOME/.Xmodmap ]; then
+#    xmodmap $HOME/.Xmodmap
+#fi
 
 # Fire up apps
 ssh-agent &
-trackerd &
-xscreensaver -no-splash &
+wicd-client &
+# xscreensaver -no-splash &
 
-exec xmonad
+exec awesome
