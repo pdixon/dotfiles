@@ -11,6 +11,7 @@ fi
 # Fire up apps
 ssh-agent &
 wicd-client &
+halevt &
 # xscreensaver -no-splash &
 
 exec awesome
