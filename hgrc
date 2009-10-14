@@ -6,7 +6,7 @@ hgext.graphlog=
 hgext.convert=
 hgk=
 hgext.purge=
-hgext.extdiff
+hgext.extdiff=
 
 [extdiff]
-cmd.opendiff = opendiff-w
+cmd.opendiff = opendiff -w

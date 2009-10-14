@@ -1,0 +1,15 @@
+[general]
+accounts = Gmail
+maxsyncaccounts = 1
+
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository Remote]
+type = Gmail
+remoteuser = phil@dixon.gen.nz
