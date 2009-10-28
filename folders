@@ -1,0 +1,8 @@
+# WL folders (put the '#' always at the beginning of the line)
+.INBOX     "Inbox"
+.Orgmode
+.Drafts
+.[Gmail].Sent Mail "Sent Mail"
+.[Gmail].All Mail "All Mail"
+.St C's
+.Transactions
