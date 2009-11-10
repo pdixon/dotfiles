@@ -2,6 +2,11 @@
 (setq
  elmo-maildir-folder-dir "~/Maildir"
  
+ elmo-imap4-default-server "imap.gmail.com"
+ elmo-imap4-default-user "phil@dixon.gen.nz"
+ elmo-imap4-default-port '993
+ elmo-imap4-default-stream-type 'ssl
+
  wl-stay-folder-window t
  wl-folder-window-width 25
  
@@ -11,10 +16,10 @@
 
  wl-from "Phillip Dixon <phil@dixon.gen.nz>"
 
- wl-default-folder ".INBOX"
- wl-draft-folder ".Drafts"
- wl-trash-folder ".trash"
- wl-spam-folder ".trash"
+ wl-default-folder "%INBOX"
+ wl-draft-folder "%[Gmail].Drafts"
+ wl-trash-folder "%trash"
+ wl-spam-folder "%trash"
  wl-queue-folder ".queue"
 
  ;; hide many fields from message buffers
