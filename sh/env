@@ -11,3 +11,7 @@ fi
 
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
+
+export GOROOT=~/go
+export GOOS="darwin"
+export GOARCH="amd64"
