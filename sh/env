@@ -1,7 +1,7 @@
 # Set PATH, CDPATH, EDITOR, etc.
 export PATH=~/dotfiles/bin:~/bin:$PATH
 
-if [[ `uname` -eq "Darwin" ]]
+if [[ `uname` == "Darwin" ]]
 then
     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
     export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
