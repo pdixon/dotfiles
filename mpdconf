@@ -1,0 +1,6 @@
+port "6600"
+music_directory         "/media/POCKETBRAIN/Music"
+playlist_directory      "/media/POCKETBRAIN/.mpd/playlists"
+db_file                 "/media/POCKETBRAIN/.mpd/mpd.db"
+log_file                "~/.mpd/mpd.log"
+error_file              "~/.mpd/mpd.error"

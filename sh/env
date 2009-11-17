@@ -1,7 +1,17 @@
 # Set PATH, CDPATH, EDITOR, etc.
 export PATH=~/dotfiles/bin:~/bin:$PATH
 
-export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+if [[ `uname` -eq "Darwin" ]]
+then
+    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+    export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+else
+    export EDITOR=emacsclient
+fi
 
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
+
+export GOROOT=~/go
+export GOOS="darwin"
+export GOARCH="amd64"
