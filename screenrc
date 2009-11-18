@@ -1,0 +1,11 @@
+altscreen on
+
+startup_message off
+defscrollback 3000
+
+escape ^Zz
+
+bind s # remove the flow control garbage
+
+hardstatus alwayslastline 
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
