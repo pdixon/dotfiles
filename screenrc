@@ -7,5 +7,7 @@ escape ^Zz
 
 bind s # remove the flow control garbage
 
+shelltitle '> |bash'
+
 hardstatus alwayslastline 
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'

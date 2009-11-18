@@ -40,7 +40,7 @@ BWHITE='\e[47m'
 
 # Update the command prompt to be <user>:<current_directory>(git_branch) >
 # Note that the git branch is given a special color
-PS1="\n\u:\w \[$EBLACK\]\$(vcprompt)\[$NO_COLOR\] \n→ "
+PS1="\n\u:\w \[$EBLACK\]\$(vcprompt)\[$NO_COLOR\] \n\[\ek\e\134\]> "
 
 # Increase history size
 shopt -s histappend
