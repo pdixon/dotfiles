@@ -26,9 +26,6 @@ def main(salary):
     print "Loan repayment: $%d"%loan
     print "PAYE: $%d"%paye
 
-
-import
-
 if __name__ == '__main__':
     import sys
     main(int(sys.argv[1]))

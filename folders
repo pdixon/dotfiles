@@ -1,9 +1,11 @@
 # WL folders (put the '#' always at the beginning of the line)
 %INBOX     "Inbox"
 %Orgmode
-%[Gmail].Drafts "Drafts"
-%[Gmail].Sent Mail "Sent Mail"
-%[Gmail].All Mail "All Mail"
+%[Gmail]/Drafts "Drafts"
+%[Gmail]/Sent Mail "Sent Mail"
+%[Gmail]/All Mail "All Mail"
+%[Gmail]/Trash "Trash"
 %St C's
 %Transactions
 %Bacon
+%nzpug
