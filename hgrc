@@ -8,6 +8,7 @@ hgk=
 hgext.purge=
 hgext.extdiff=
 color=
+hgext.fetch=
 
 [extdiff]
 cmd.opendiff = opendiff -w
