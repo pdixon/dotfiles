@@ -22,7 +22,7 @@ function cdc() {
 }
 alias cls='clear; ls'
 alias h='history'
-alias ls='ls --color'
+alias ls='ls -G'
 alias l.='ls -d .[^.]*'
 alias l='ls -lhG'  # -l long listing, most recent first
                     # -G color

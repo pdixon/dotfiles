@@ -1,7 +1,10 @@
 altscreen on
 
 startup_message off
-defscrollback 3000
+defscrollback 30000
+
+# Hook the xterm scroll bars to the screen buffers.
+termcapinfo xterm* ti@:te@
 
 escape ^Zz
 
