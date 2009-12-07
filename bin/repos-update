@@ -1,0 +1,12 @@
+#! /bin/bash
+
+for repo in $(find . -type d -depth 1)
+do
+    if [ -d $repo/.hg ]
+    then
+        echo REPO: $repo
+        cd ./$repo
+        hg fetch
+        cd ..
+    fi
+done
