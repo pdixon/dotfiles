@@ -6,7 +6,8 @@ do
     then
         echo REPO: $repo
         cd ./$repo
-        hg pull
+        hg st
+        hg outgoing
         cd ..
     fi
 done
