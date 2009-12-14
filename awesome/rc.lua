@@ -10,6 +10,9 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+-- Load Vicious
+require("vicious")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
@@ -111,6 +114,17 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+
+-- {{{ Battery state
+baticon = widget({ type = "imagebox" })
+baticon.image = image(beautiful.widget_bat)
+-- Initialize widget
+batwidget = widget({ type = "textbox" })
+-- Register widget
+vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
+-- }}}
+
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -142,6 +156,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        baticon, batwidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
