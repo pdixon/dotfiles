@@ -328,6 +328,8 @@ client.add_signal("manage", function (c, startup)
         end
     end)
 
+    c.size_hints_honor = false
+
     if not startup then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
