@@ -11,6 +11,14 @@ alias ee="$EDITOR ~/dotfiles/sh/env"
 # cd ~/repos/$*
 #}
 
+# BSD and GNU ls don't have the same args !?!
+if [[ `uname` == "Darwin" ]]
+then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
+
 # Common -- Some are from Damian Conway
 alias a='ls -A' # -A all except literal . ..
 alias la="ls -A -l -G"
@@ -22,7 +30,6 @@ function cdc() {
 }
 alias cls='clear; ls'
 alias h='history'
-alias ls='ls -G'
 alias l.='ls -d .[^.]*'
 alias l='ls -lhG'  # -l long listing, most recent first
                     # -G color
