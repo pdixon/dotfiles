@@ -10,8 +10,10 @@ fi
 
 # Fire up apps
 ssh-agent &
-wicd-client &
+#wicd-client &
+nm-applet &
+bluetooth-applet &
 halevt &
-# xscreensaver -no-splash &
+xscreensaver -no-splash &
 
 exec awesome
