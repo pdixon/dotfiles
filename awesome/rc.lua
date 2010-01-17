@@ -11,7 +11,7 @@ require("naughty")
 require("debian.menu")
 
 -- Load Vicious
-require("vicious")
+-- require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -115,14 +115,14 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 
--- {{{ Battery state
-baticon = widget({ type = "imagebox" })
-baticon.image = image(beautiful.widget_bat)
--- Initialize widget
-batwidget = widget({ type = "textbox" })
--- Register widget
-vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
--- }}}
+-- -- {{{ Battery state
+-- baticon = widget({ type = "imagebox" })
+-- baticon.image = image(beautiful.widget_bat)
+-- -- Initialize widget
+-- batwidget = widget({ type = "textbox" })
+-- -- Register widget
+-- vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
+-- -- }}}
 
 
 for s = 1, screen.count() do
@@ -156,7 +156,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        baticon, batwidget,
+        -- baticon, batwidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
