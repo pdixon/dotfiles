@@ -4,3 +4,9 @@ playlist_directory      "/media/POCKETBRAIN/.mpd/playlists"
 db_file                 "/media/POCKETBRAIN/.mpd/mpd.db"
 log_file                "~/.mpd/mpd.log"
 error_file              "~/.mpd/mpd.error"
+audio_output {
+	type		"pulse"
+        name		"MPD"
+#	server		"remote_server"		# optional
+#	sink		"remote_server_sink"	# optional
+}

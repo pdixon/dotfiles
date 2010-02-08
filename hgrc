@@ -9,7 +9,7 @@ hgext.purge=
 hgext.extdiff=
 color=
 hgext.fetch=
-
+prompt=~/dotfiles/lib/prompt.py
 [extdiff]
 cmd.opendiff = opendiff -w
 

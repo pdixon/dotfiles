@@ -1,8 +1,17 @@
 autoload -U colors
 colors
 setopt prompt_subst
+
+function hg_prompt_info {
+    hg prompt --angle-brackets "\
+< on <branch>>\
+< at <tags|, >>\
+<status|modified|unknown><update><
+patches: <patches|join( → )>>" 2>/dev/null
+}
+
 PROMPT='
-%~ %{$fg_bold[black]%}$(vcprompt)
+%~$(hg_prompt_info)
 → %{$reset_color%}'
 
 # Set RPROMPT to have info show up on the right, too.
