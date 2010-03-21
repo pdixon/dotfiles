@@ -2,3 +2,4 @@ syntax: glob
 *.pyc
 */.ropeproject/*
 awesome/vicious
+xmonad/*
