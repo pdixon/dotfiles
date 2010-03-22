@@ -7,7 +7,7 @@ do
         echo REPO: $repo
         cd ./$repo
         hg st
-        hg outgoing
+        hg outgoing -q --color=auto --template '{rev}:{node|short} {desc|firstline}\n'
         cd ..
     fi
 done
