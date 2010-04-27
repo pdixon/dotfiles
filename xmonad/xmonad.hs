@@ -5,6 +5,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.IM
 import XMonad.Layout.Reflect
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 
 
@@ -29,17 +30,19 @@ basicLayout = Tall nmaster delta ratio where
     ratio = 1/2
 tallLayout = basicLayout
 singleLayout = simpleTabbed
-imLayout = withIM (0.2) (Role "contact list") $ reflectHoriz $ withIM (0.2) (ClassName "gwibber") simpleTabbed
+imLayout = withIM (0.2) empathyRoster $ reflectHoriz $ withIM (0.3) skypeRoster $ simpleTabbed where
+    skypeRoster = (Role "contact_list")
+    empathyRoster = And (ClassName "Skype") (Role "MainWindow")
 
-myLayoutHook = im $ normal where
-    normal = tallLayout ||| singleLayout
+myLayoutHook = desktopLayoutModifiers $ smartBorders $ im $ normal where
+    normal = (tallLayout ||| singleLayout)
     im = onWorkspace "im" imLayout
 
 -- put it all together
 main = xmonad $ myBaseConfig
        { modMask = myModMask
        , workspaces = myWorkspaces
-       , layoutHook = desktopLayoutModifiers $ myLayoutHook
+       , layoutHook = myLayoutHook
        , manageHook = manageDocks
        , borderWidth = myBorderWidth
        , normalBorderColor = myNormalBorderColor
