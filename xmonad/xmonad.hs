@@ -7,6 +7,7 @@ import XMonad.Layout.IM
 import XMonad.Layout.Reflect
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 
 
 myBaseConfig = gnomeConfig
@@ -38,12 +39,16 @@ myLayoutHook = desktopLayoutModifiers $ smartBorders $ im $ normal where
     normal = (tallLayout ||| singleLayout)
     im = onWorkspace "im" imLayout
 
+myManageHook = composeOne [
+               isFullscreen -?> doFullFloat
+               ]
+
 -- put it all together
 main = xmonad $ myBaseConfig
        { modMask = myModMask
        , workspaces = myWorkspaces
        , layoutHook = myLayoutHook
-       , manageHook = manageDocks
+       , manageHook = myManageHook <+> manageDocks
        , borderWidth = myBorderWidth
        , normalBorderColor = myNormalBorderColor
        , focusedBorderColor = myFocusedBorderColor
