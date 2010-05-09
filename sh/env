@@ -1,5 +1,5 @@
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/dotfiles/bin:~/bin:$PATH
+export PATH=~/.gem/ruby/1.8/bin:~/dotfiles/bin:~/bin:$PATH
 
 if [[ `uname` == "Darwin" ]]
 then
@@ -13,5 +13,9 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export GOROOT=~/go
-export GOOS="darwin"
+if [[ `uname` == "Darwin" ]]
+then
+    export GOOS="darwin"
+else
+fi
 export GOARCH="amd64"

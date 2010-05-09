@@ -1,3 +1,18 @@
 [user]
-name = Phillip DIXON
-email = phil@dixon.gen.nz
+        name = Phillip DIXON
+        email = phil@dixon.gen.nz
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = true
+        pager = true
+
+[core]
+        pager = less -FRSX
+
+[alias]
+        st = status
+        ci = commit -a
