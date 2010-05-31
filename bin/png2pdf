@@ -1,0 +1,3 @@
+#! /bin/bash
+
+gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pngalpha -sOutputFile=${1%.*}.png -r300 $1
