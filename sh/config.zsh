@@ -98,3 +98,7 @@ bindkey '^[[B' down-line-or-search
 
 autoload -U zsh-mime-setup
 zsh-mime-setup
+
+compdef '_files -g "*.mdwn"' mdwn2html
+compdef '_files -g "*.mdwn"' mdwn2odt
+compdef '_files -g "*.mdwn"' markdown2pdf
