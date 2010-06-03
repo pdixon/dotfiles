@@ -10,8 +10,6 @@ escape ^Zz
 
 bind s # remove the flow control garbage
 
-shelltitle '> |bash'
-
 autodetach on
 vbell off
 
