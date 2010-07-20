@@ -12,6 +12,8 @@ fi
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
+export PYTHONSTARTUP=~/dotfiles/pythonrc.py
+
 export GOROOT=~/go
 if [[ `uname` == "Darwin" ]]
 then
