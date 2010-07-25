@@ -1,5 +1,5 @@
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/dotfiles/bin:~/bin:$PATH
+export PATH=~/dotfiles/bin:~/bin:~/.cabal/bin:$PATH
 
 if [[ `uname` == "Darwin" ]]
 then
