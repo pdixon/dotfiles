@@ -1,5 +1,5 @@
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/.gem/ruby/1.8/bin:~/dotfiles/bin:~/bin:$PATH
+export PATH=~/dotfiles/bin:~/bin:~/.gem/ruby/1.8/bin:~/.cabal/bin:$PATH
 
 if [[ `uname` == "Darwin" ]]
 then
