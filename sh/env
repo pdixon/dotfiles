@@ -9,6 +9,8 @@ else
     export EDITOR=emacsclient
 fi
 
+export ALTERNATE_EDITOR=vim
+
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
