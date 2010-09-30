@@ -27,8 +27,3 @@ else:
             import readline
             readline.write_history_file(history_file)
         atexit.register(save_hist)
-
-    # Clean up the namespace.
-    del readline
-    del rlcompleter
-    del atexit
