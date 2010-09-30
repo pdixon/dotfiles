@@ -30,5 +30,5 @@ else:
 
     # Clean up the namespace.
     del readline
-    del os.path
+    del rlcompleter
     del atexit
