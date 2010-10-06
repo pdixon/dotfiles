@@ -1,2 +1,7 @@
 *.pyc
 /vim/.netrwhist
+*.o
+*.hi
+*.errors
+xmonad-*-linux
+
