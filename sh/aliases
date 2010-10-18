@@ -145,3 +145,8 @@ function __rm_single_file(){
 }
 
 alias mdwn2pdf="markdown2pdf"
+
+function asc(){
+    autossh -x -a -t "$@" 'screen -RdU'
+}
+
