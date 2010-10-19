@@ -150,3 +150,16 @@ function asc(){
     autossh -x -a -t "$@" 'screen -RdU'
 }
 
+# just press 'asdf' keys to toggle between dvorak and us keyboard layout
+
+aoeu() {
+    echo -n 'Switching to us keyboard layout: '
+    [[ -z "$DISPLAY" ]] && $SUDO loadkeys us &>/dev/null || setxkbmap us &>/dev/null
+    echo 'Done'
+}
+asdf() {
+    echo -n 'Switching to dvorak keyboard layout: '
+    [[ -z "$DISPLAY" ]] && $SUDO loadkeys dvorak &>/dev/null || setxkbmap dvorak &>/dev/null
+    echo 'Done'
+}
+
