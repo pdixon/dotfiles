@@ -1,0 +1,14 @@
+#! /bin/bash
+
+#see http://superuser.com/questions/181517/how-to-execute-a-command-whenever-a-file-changes
+
+file=$1
+shift
+command=$*
+
+while true; do
+  change=$(inotifywait -e close_write,moved_to,create .)
+  change=${change#./ * }
+  if [ "$change" = "$file" ]; then $command ; fi
+done
+
