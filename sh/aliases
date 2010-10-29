@@ -163,3 +163,14 @@ asdf() {
     echo 'Done'
 }
 
+function psgrep() {
+    ps ax|grep -v grep|grep "$1"
+}
+
+function zapnotes {
+    for pid in $(psgrep 'lotus\\notes'|awk '{print $2}')
+    do
+        kill $pid
+    done
+}
+
