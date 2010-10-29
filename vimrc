@@ -24,3 +24,5 @@ set relativenumber
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 set laststatus=2
 
+vmap Q gq
+nmap Q gqap
