@@ -5,12 +5,6 @@ alias reload='source ~/dotfiles/sh/aliases'
 alias ea='$EDITOR ~/dotfiles/sh/aliases && reload' # Edit aliases
 alias ee="$EDITOR ~/dotfiles/sh/env"
 
-# Quicker cd
-#alias cg='cd /Library/Ruby/Gems/1.8/gems/'
-#function cr() {
-# cd ~/repos/$*
-#}
-
 # BSD and GNU ls don't have the same args !?!
 if [[ `uname` == "Darwin" ]]
 then
@@ -19,25 +13,16 @@ else
     alias ls='ls --color=auto'
 fi
 
-# Common -- Some are from Damian Conway
-alias a='ls -A' # -A all except literal . ..
-alias la="ls -A -l -G"
 alias c='clear'
 alias cdd='cd -'  # goto last dir cd'ed from
 alias cl='clear; l'
-function cdc() { 
-    cd $1; ls 
-}
-alias cls='clear; ls'
 alias h='history'
+
+alias l='ls -lh'  # -l long listing, most recent first
+alias la="ls -Al"
 alias l.='ls -d .[^.]*'
-alias l='ls -lhG'  # -l long listing, most recent first
-                    # -G color
-alias lh="ls -lh"
-alias ll='ls -lhG'  # -l long listing, human readable, no group info
 alias lt='ls -lt' # sort with recently modified first
 alias md='mkdir -p'
-alias s='cd ..'   # up one dir
 
 function take() { 
     mkdir -p "$1"
@@ -45,104 +30,30 @@ function take() {
 }
 
 alias e='$EDITOR'
-alias k9="killall -9"
-function killnamed () { 
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill 
-}
+
 function zipr() {
   zip -r $1.zip $1
 }
 
 # Finder
 alias o='open . &'
-alias ff='open -a Firefox'
 
 # General code
-
-# From Chris Wanstrath
-function pless() { 
-    pygmentize $1 | less -r 
-}
 
 # Processes
 alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
-# Mercurial hg
-function new-hg() {
-    ssh hg@example.com "hg init $1"
-    hg clone ssh://hg@example.com/$1
-}
 
 # Text editing
-# Emacs
-alias em="open -a Emacs"
-alias emm="open -a Emacs ."
 # Regenerate TAGS file from file arguments
 function ct() {
   rm -f TAGS
   etags --append --output=TAGS $*
 }
 
-# TextMate
-alias et="mate"
-alias ett="mate ."
-
-# Setup a tunnel
-function haproxyssh() { 
-  ssh -L7997:127.0.0.1:7997 deploy@$1.com 
-}
-
-# Syntax check Javascript
-function jsc() { 
-  jsl -conf /etc/jsl/jsl.conf -process $1 
-}
-
-function aiff2mp3() { 
-  lame -h -V 0 $1.aif $1.mp3 
-}
-function wav2mp3() { 
-  lame -h -V 0 $1.wav $1.mp3 
-}
 
 alias ox="open *.xcodeproj"
-
-# From http://github.com/suztomo/dotfiles
-function rmf(){
-    for file in $*
-    do
-        __rm_single_file $file
-    done
-}
-
-function __rm_single_file(){
-    if ! [ -d ~/.Trash/ ]
-    then
-        command /bin/mkdir ~/.Trash
-    fi
-
-    if ! [ $# -eq 1 ]
-    then
-        echo "__rm_single_file: 1 argument required but $# passed."
-        exit
-    fi
-
-    if [ -e $1 ]
-    then
-        BASENAME=`basename $1`
-        NAME=$BASENAME
-        COUNT=0
-        while [ -e ~/.Trash/$NAME ]
-        do
-            COUNT=$(($COUNT+1))
-            NAME="$BASENAME.$COUNT"
-        done
-
-        command /bin/mv $1 ~/.Trash/$NAME
-    else
-        echo "No such file or directory: $file"
-    fi
-}
 
 alias mdwn2pdf="markdown2pdf"
 
@@ -172,5 +83,13 @@ function zapnotes {
     do
         kill $pid
     done
+}
+
+n () {
+    $EDITOR ~/notes/"$1".md
+}
+
+nls () {
+    tree -CR --noreport ~/notes | awk '{ if ((NR > 1) gsub(/.md/,"")); if (NF==1) print $1; else if (NF==2) print $2; else if (NF==3) printf " %s\n", $3 }' ;
 }
 
