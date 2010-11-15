@@ -86,7 +86,13 @@ function zapnotes {
 }
 
 n () {
-    $EDITOR ~/notes/"$1".md
+    if [ -z "$1" ]
+    then
+        the_file="inbox"
+    else
+        the_file="$1"
+    fi
+    $EDITOR ~/notes/"$the_file".md
 }
 
 nls () {
