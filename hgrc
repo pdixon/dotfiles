@@ -11,7 +11,7 @@ color=
 hgext.fetch=
 prompt=~/dotfiles/lib/prompt.py
 pager=
-hgext.git=
+hggit=
 bookmarks=
 
 [pager]
