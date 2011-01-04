@@ -1,5 +1,6 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 
 set nocompatible
@@ -16,7 +17,8 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 set autoindent
-
+set list
+set listchars=tab:▸\ ,eol:¬
 syntax enable
 
 set showcmd
@@ -28,6 +30,8 @@ set laststatus=2
 set incsearch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
+
+set spell spelllang=en_nz
 
 vmap Q gq
 nmap Q gqap
