@@ -13,6 +13,8 @@ prompt=~/dotfiles/lib/prompt.py
 pager=
 hgext.git=
 bookmarks=
+parentrevspec=
+debugshell=~/dotfiles/lib/debugshell.py
 
 [pager]
 pager = LESS='FSRX' less

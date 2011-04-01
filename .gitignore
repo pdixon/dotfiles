@@ -4,4 +4,4 @@
 *.hi
 *.errors
 xmonad-*-linux
-
+vim/bundle/*
