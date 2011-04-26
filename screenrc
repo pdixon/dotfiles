@@ -3,6 +3,8 @@ altscreen on
 startup_message off
 defscrollback 30000
 
+term screen-256colors
+
 # Hook the xterm scroll bars to the screen buffers.
 termcapinfo xterm* ti@:te@
 
