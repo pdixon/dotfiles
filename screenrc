@@ -16,7 +16,7 @@ autodetach on
 vbell off
 
 hardstatus alwayslastline 
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus string '%{= dg}[ %{G}%H %{g}][%= %{= dG}%?%-Lw%?%{r}(%{g}%n*%f%t%?(%u)%?%{r})%{G}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{G}%c %{g}]'
 
 # Screen numbering starting at 1 rather then 0.
 bind c screen 1
