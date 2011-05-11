@@ -1,0 +1,49 @@
+#! /usr/bin/env python
+""" Find duplicate adjacent words in text. Based on the perl script
+for the same task
+http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
+"""
+import re
+
+WORD_RE = re.compile("(\W+)")
+WHITESPACE_RE = re.compile("^\s+$")
+PUNCTUATION_RE = re.compile("^\W+$")
+
+def usage():
+    print "usage: dupwords <file> ..."
+
+def file_dups(filename):
+    line_num = 0
+    last_word = ""
+    dup_count = 0
+    with open(filename) as f:
+        for line in f:
+            line_num += 1
+            words = WORD_RE.split(line)
+            for word in words:
+                if len(word) == 0:
+                    continue
+                if WHITESPACE_RE.match(word):
+                    continue
+                if PUNCTUATION_RE.match(word):
+                    last_word = ""
+                    continue
+                if word.lower() == last_word.lower():
+                    print "%s:%d %s"%(filename, line_num, word)
+                    dup_count += 1
+                last_word = word
+    return dup_count
+            
+
+def main(args):
+    if len(args) == 0:
+        usage()
+        return 1
+
+    dups = 0
+    for a in args:
+        dups += file_dups(a)
+
+if __name__ == '__main__':
+    import sys
+    exit(main(sys.argv[1:]))
