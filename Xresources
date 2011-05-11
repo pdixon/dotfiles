@@ -50,7 +50,7 @@
 !! Light Theme
 URxvt*background:            S_base3
 URxvt*foreground:            S_base00
-URxvt*fading:                40
+URxvt*fading:                20
 URxvt*fadeColor:             S_base3
 URxvt*cursorColor:           S_base1
 URxvt*pointerColorBackground:S_base01
@@ -92,7 +92,7 @@ Emacs.FontBackend: xft
 ! Emacs*font: Inconsolata-11
 ! Emacs.mode-line.attributeFont: Inconsolata-11
 
-URxvt*font: xft:inconsolata:size=11
+URxvt*font: xft:Anonymous Pro:size=11
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
