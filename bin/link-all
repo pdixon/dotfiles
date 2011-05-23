@@ -1,0 +1,6 @@
+#! /bin/zsh
+
+for item in "$1"/*(*)
+do
+    ln -s "$item" ~/bin/
+done
