@@ -1,0 +1,6 @@
+#! /bin/bash
+
+for inFile; do
+    dot -Tsvg $inFile > ${inFile%.*}.svg
+done
+
