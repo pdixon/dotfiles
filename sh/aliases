@@ -18,7 +18,7 @@ alias cdd='cd -'  # goto last dir cd'ed from
 alias cl='clear; l'
 alias h='history'
 
-alias l='ls -lh'  # -l long listing, most recent first
+alias l='ls -h'  
 alias la="ls -Al"
 alias l.='ls -d .[^.]*'
 alias lt='ls -lt' # sort with recently modified first
