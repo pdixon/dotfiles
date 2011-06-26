@@ -92,7 +92,7 @@ Emacs.FontBackend: xft
 ! Emacs*font: Inconsolata-11
 ! Emacs.mode-line.attributeFont: Inconsolata-11
 
-URxvt*font: xft:Anonymous Pro:size=11
+URxvt*font: xft:Anonymous Pro:size=10
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
