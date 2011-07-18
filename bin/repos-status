@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for repo in $(find . -type d -depth 1)
+for repo in $(find ./ -maxdepth 1 -type d)
 do
     if [ -d $repo/.hg ]
     then
