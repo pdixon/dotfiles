@@ -113,6 +113,8 @@ LISTMAX=0 # ask to complete if top of list would scroll off screen
 autoload compinit
 compinit
 
+setopt autopushd
+
 # Make CTRL-W delete after other chars, not just spaces
 WORDCHARS=${WORDCHARS//[&=\/;\!#%\{]}
 
