@@ -115,10 +115,6 @@ compinit
 
 setopt autopushd
 
-# Make CTRL-W delete after other chars, not just spaces
-WORDCHARS=${WORDCHARS//[&=\/;\!#%\{]}
-
-bindkey -e
 
 # autoload -U zsh-mime-setup
 # zsh-mime-setup
@@ -126,3 +122,25 @@ bindkey -e
 compdef '_files -g "*.mdwn"' mdwn2html
 compdef '_files -g "*.mdwn"' mdwn2odt
 compdef '_files -g "*.mdwn"' markdown2pdf
+
+
+# Line Editor Setup.
+
+bindkey -e
+
+# Make CTRL-W delete after other chars, not just spaces
+WORDCHARS=${WORDCHARS//[&=\/;\!#%\{]}
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+ 
