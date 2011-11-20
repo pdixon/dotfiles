@@ -1,5 +1,5 @@
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/dotfiles/bin:~/bin:~/.gem/ruby/1.8/bin:~/.cabal/bin:~/.local/bin:$PATH
+export PATH=~/dotfiles/bin:~/bin:~/Library/Haskell/bin:~/.gem/ruby/1.8/bin:~/.cabal/bin:~/.local/bin:$PATH
 
 if [[ `uname` == "Darwin" ]]
 then
@@ -26,3 +26,4 @@ else
 fi
 export GOARCH="amd64"
 
+eval "$(rbenv init -)"
