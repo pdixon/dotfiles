@@ -31,6 +31,11 @@ function take() {
 
 alias e='$EDITOR'
 
+function se () {
+    $EDITOR -c "/sudo:root@localhost:$1"
+}
+
+
 function zipr() {
   zip -r $1.zip $1
 }
