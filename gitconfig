@@ -14,7 +14,8 @@
         pager = less -FRSX
 
 [alias]
-        st = status
-        ci = commit
-        co = checkout
-
+    st = status --short
+    ci = commit
+    co = checkout
+    sl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+    gl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
