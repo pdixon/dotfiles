@@ -48,7 +48,7 @@ patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset
 }
 
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
+%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)
 → %{$reset_color%}'
 
 # Set RPROMPT to have info show up on the right, too.
