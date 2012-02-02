@@ -3,6 +3,7 @@ autoload -U colors
 colors
 setopt prompt_subst
 
+# Prompt helpers
 function git_current_branch() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "${ref#refs/heads/}"
@@ -18,6 +19,8 @@ function git_repo_clean() {
     fi
 }
 
+
+# Prompt set up.
 PROMPT='
 %~
 → '
