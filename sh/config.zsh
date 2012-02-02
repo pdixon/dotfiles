@@ -47,3 +47,29 @@ function preexec() {
     local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]}
     title "$CMD" "%100>...>$2%<<"
 }
+
+# Line Editor Setup.
+
+setopt CORRECT
+setopt CORRECTALL
+
+bindkey -e
+
+# Make CTRL-W delete after other chars, not just spaces
+WORDCHARS=${WORDCHARS//[&=\/;\!#%\{]}
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+# Quote pasted URLs
+autoload url-quote-magic
+zle -N self-insert url-quote-magic
