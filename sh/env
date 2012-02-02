@@ -3,11 +3,10 @@ export PATH=~/dotfiles/bin:~/bin:~/Library/Haskell/bin:~/.gem/ruby/1.8/bin:~/.ca
 
 if [[ `uname` == "Darwin" ]]
 then
-    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-    export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-else
-    export EDITOR=emacsclient
+    alias emacsclient='/opt/homebrew/bin/emacsclient'
 fi
+
+export EDITOR='emacsclient -nw'
 
 export ALTERNATE_EDITOR=vim
 # export EDITOR=vim
