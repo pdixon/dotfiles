@@ -73,3 +73,15 @@ bindkey '^[[B' down-line-or-beginning-search
 # Quote pasted URLs
 autoload url-quote-magic
 zle -N self-insert url-quote-magic
+
+# History handling
+
+HISTFILE=~/.zsh_history
+SAVEHIST=100000
+HISTSIZE=1000000
+
+setopt share_history
+setopt append_history
+setopt extended_history
+setopt hist_ignore_space
+setopt hist_ignore_dups
