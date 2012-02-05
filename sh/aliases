@@ -1,5 +1,11 @@
 # Command Enhancements
 
+alias e=$EDITOR
+
+function se () {
+    $EDITOR -c "/sudo:root@localhost:$1"
+}
+
 # Utility
 alias reload='source ~/dotfiles/sh/aliases'
 alias ea='$EDITOR ~/dotfiles/sh/aliases && reload' # Edit aliases
@@ -28,13 +34,6 @@ function take() {
     mkdir -p "$1"
     cd "$1" 
 }
-
-alias e=$EDITOR
-
-function se () {
-    $EDITOR -c "/sudo:root@localhost:$1"
-}
-
 
 function zipr() {
   zip -r $1.zip $1
