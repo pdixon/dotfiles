@@ -1,5 +1,15 @@
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/dotfiles/bin:~/bin:~/Library/Haskell/bin:~/.gem/ruby/1.8/bin:~/.cabal/bin:~/.local/bin:$PATH
+
+typeset -U path
+
+if [[ `uname` == "Darwin" ]] then
+    path=(~/Library/Haskell/bin $path)
+else
+    path=(~/.cabal/bin $path)
+fi
+
+path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
+
 
 if [[ `uname` == "Darwin" ]]
 then
@@ -18,14 +28,5 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
-
-export GOROOT=~/go
-if [[ `uname` == "Darwin" ]]
-then
-    export GOOS="darwin"
-else
-    export GOOS="linux"
-fi
-export GOARCH="amd64"
 
 eval "$(rbenv init -)"
