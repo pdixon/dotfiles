@@ -2,7 +2,7 @@
 
 typeset -U path
 
-if [[ `uname` == "Darwin" ]] then
+if [[ `uname` == "Darwin" ]]; then
     path=(~/Library/Haskell/bin $path)
 else
     path=(~/.cabal/bin $path)
@@ -11,8 +11,7 @@ fi
 path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
 
 
-if [[ `uname` == "Darwin" ]]
-then
+if [[ `uname` == "Darwin" ]]; then
     alias emacsclient='/opt/homebrew/bin/emacsclient'
 fi
 
@@ -28,5 +27,5 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
-
-eval "$(rbenv init -)"
+ 
+[[ -n $(which rbenv) ]] && eval "$(rbenv init -)"
