@@ -85,3 +85,13 @@ setopt append_history
 setopt extended_history
 setopt hist_ignore_space
 setopt hist_ignore_dups
+
+# Completion
+LISTMAX=0 # ask to complete if top of list would scroll off screen
+
+autoload compinit
+compinit
+
+compdef '_files -g "*.mdwn"' mdwn2html
+compdef '_files -g "*.mdwn"' mdwn2odt
+compdef '_files -g "*.mdwn"' markdown2pdf
