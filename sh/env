@@ -28,4 +28,4 @@ export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
  
-[[ -n $(which rbenv) ]] && eval "$(rbenv init -)"
+hash rbenv 2> /dev/null && eval "$(rbenv init -)"
