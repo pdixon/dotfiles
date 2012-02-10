@@ -3,7 +3,7 @@
 alias e=$EDITOR
 
 function se () {
-    $EDITOR -c "/sudo:root@localhost:$1"
+    sudo -e $@
 }
 
 # Utility

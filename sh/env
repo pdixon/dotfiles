@@ -10,16 +10,7 @@ fi
 
 path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
 
-
-if [[ `uname` == "Darwin" ]]; then
-    alias emacsclient='/opt/homebrew/bin/emacsclient'
-fi
-
-function et () {
-    emacsclient -t "$@"
-}
-
-export EDITOR=et
+export EDITOR=my-editor
 
 export ALTERNATE_EDITOR=vim
 
