@@ -1,0 +1,9 @@
+#! /bin/zsh
+
+if [[ `uname` == "Darwin" ]]; then
+    EMACSCLIENT='/opt/homebrew/bin/emacsclient'
+else
+    EMACSCLIENT=emacsclient
+fi
+
+exec $EMACSCLIENT -t $@

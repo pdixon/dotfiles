@@ -1,5 +1,11 @@
 # Command Enhancements
 
+alias e=$EDITOR
+
+function se () {
+    sudo -e $@
+}
+
 # Utility
 alias reload='source ~/dotfiles/sh/aliases'
 alias ea='$EDITOR ~/dotfiles/sh/aliases && reload' # Edit aliases
@@ -28,13 +34,6 @@ function take() {
     mkdir -p "$1"
     cd "$1" 
 }
-
-alias e='$EDITOR'
-
-function se () {
-    $EDITOR -c "/sudo:root@localhost:$1"
-}
-
 
 function zipr() {
   zip -r $1.zip $1
@@ -90,17 +89,16 @@ function zapnotes {
     done
 }
 
-n () {
+function n () {
     if [ -z "$1" ]
     then
-        the_file="inbox"
+        the_file="Inbox"
     else
         the_file="$1"
     fi
-    $EDITOR ~/notes/"$the_file".md
+    $EDITOR ~/Dropbox/Elements/"$the_file".mdwn
 }
 
-nls () {
-    tree -CR --noreport ~/notes | awk '{ if ((NR > 1) gsub(/.md/,"")); if (NF==1) print $1; else if (NF==2) print $2; else if (NF==3) printf " %s\n", $3 }' ;
+function nls () {
+ print -l ~/Dropbox/Elements/*$1*.mdwn(:r:t)
 }
-
