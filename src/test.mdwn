@@ -1,0 +1,24 @@
+% Just a Sample File
+% Phillip Dixon
+% February, 2012
+
+# A Heading
+
+Some text.
+
+~~~~ {.haskell filename="test.hs"}
+foo :: String -> String
+foo = undefined
+~~~~~~~~~~
+
+Some more text.
+
+~~~~ {.haskell filename="test.hs"}
+bar :: Int -> Int
+bar = undefined
+~~~~~~~~
+
+
+~~~~ {.sh filename="build.sh"}
+ghc --make test.hs
+~~~~~~~
