@@ -30,9 +30,7 @@ RPROMPT='%{$fg[white]%} $(git_current_branch) $(git_commit_id) $(git_repo_clean)
 # Title handling
 
 function title() {
-    if [[ $TERM == screen* ]]; then
-        print -Pn "\ek$1:q\e\\"
-    elif [[ $TERM == xterm* ]] || [[ $TERM == rxvt* ]]; then
+    if [[ $TERM == xterm* ]] || [[ $TERM == rxvt* ]]; then
         print -Pn "\e]2;$2:q\a" #set the window name
         print -Pn "\e]1;$1:q\a" #set the tab
     fi
