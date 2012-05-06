@@ -1,13 +1,13 @@
-#! /usr/bin/python2.5
+#! /usr/bin/python2.7
 
-def calc_loan(salary, threshold=18148):
+def calc_loan(salary, threshold=19084):
     return (salary-threshold)*0.10
 
 
-TAX_BRACKETS = ((0, 14000, 0.139),
-                (14001, 40000, 0.224),
-                (40001, 70000, 0.344),
-                (70001, 500000, 0.404))
+TAX_BRACKETS = ((0, 14000, 0.1254),
+                (14001, 48000, 0.1954),
+                (48001, 70000, 0.3204),
+                (70001, 500000, 0.3504))
 
 def calc_bracket(b, salary):
     i = (b[1] - b[0]) if salary > b[1] else ((salary - b[0]) if salary > b[0] else 0)

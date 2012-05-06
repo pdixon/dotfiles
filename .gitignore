@@ -3,6 +3,7 @@
 *.o
 *.hi
 *.errors
+.DS_Store
 xmonad-*-linux
 vim/bundle/*
 

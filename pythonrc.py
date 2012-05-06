@@ -1,7 +1,7 @@
 try:
     import readline
 except ImportError:
-    print "No Readline"
+    print("No Readline")
     pass
 else:
     import rlcompleter
