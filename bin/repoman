@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+# Utilities
+def subrepos(repo):
+    """ Determine if REPO has an subrepos
+    """
+    pass
+
+def upstream(repo):
+    """ Determine the upstream source of a repo.
+    """
+    def hg_source(path):
+        config = configparser.ConfigParser()
+        config.read(path+'/.hg/hgrc')
+        try:
+            return config["paths"]["default"]
+        except KeyError:
+            pass
+
+    def git_source(path):
+        config = configparser.ConfigParser()
+        config.read(path+'/.git/config')
+        try:
+            return config['remote "origin"']["url"]
+        except KeyError:
+            pass
+
+    source = {"git": git_source,
+              "hg": hg_source}
+
+    return source[repo[0]](repo[1])
+
+
+def find_repos(base):
+    """ Walk the directory tree under base looking for hg and git repos.
+    """
+    tree = os.walk(base, topdown=True)
+    for root, dirs, files in tree:
+        if '.hg' in dirs:
+            dirs.remove('.hg')
+            yield ("hg", os.path.abspath(root))
+        if '.git' in dirs:
+            dirs.remove('.git')
+            yield ("git", os.path.abspath(root))
+
+# Commands
+
+# Application infrastructure
+def get_parser():
+    pass
+
+
+def main(argv):
+    parser = get_parser()
+    args = parser.parse(argv)
+    return args.func(args)
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main(sys.argv[1:]))
