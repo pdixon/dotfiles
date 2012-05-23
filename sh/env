@@ -26,4 +26,4 @@ else
 fi
 export GOARCH="amd64"
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
