@@ -1,0 +1,78 @@
+#!/home/pdixon/builds/cpython/python
+
+import sqlite3
+
+import datetime
+
+import socket
+import fcntl
+import struct
+import array
+
+SIOCGSTAMP = 0x8906
+
+CAN_EFF_FLAG = 0x80000000
+CAN_RTR_FLAG = 0x40000000
+CAN_ERR_FLAG = 0x20000000
+
+CAN_SFF_MASK = 0x000007ff
+CAN_EFF_MASK = 0x1fffffff
+CAN_ERR_MASK = 0x1fffffff
+
+PGN_SA_MASK  = 0x000000ff
+PGN_PS_MASK  = 0x0000ff00
+PGN_PF_MASK  = 0x00ff0000
+PGN_DP_MASK  = 0x01000000
+PGN_EDP_MASK = 0x02000000
+PGN_PRI_MASK = 0x1c000000
+
+J1939_INVALID_ADDRESS = 254 # TODO 
+
+can_frame_fmt = "=IBx8s"
+can_frame_size = struct.calcsize(can_frame_fmt)
+
+tv_fmt = "ll"
+tv_size = struct.calcsize(tv_fmt)
+
+def unpack_can_frame(frame):
+    can_id, can_dlc, data = struct.unpack(can_frame_fmt, frame)
+    return (can_id, data[:can_dlc])
+
+def unpack_tv(tv):
+    secs, usecs = struct.unpack(tv_fmt, tv)
+    return secs + usecs/1000000.0
+
+def can_socket(interface):
+    s = socket.socket(socket.AF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
+    s.bind((interface,))
+    return s
+
+def recv_frame(s):
+    frame = s.recv(can_frame_size)
+    tv_buf = array.array('B', [0]*tv_size);
+    tv = fcntl.ioctl(s, SIOCGSTAMP, tv_buf, False)
+    can_id, data = unpack_can_frame(frame)
+    timestamp = unpack_tv(tv)
+    return timestamp, can_id, data
+
+def unpack_can_id_as_j1939(can_id):
+    sa = can_id & PGN_SA_MASK
+    ps = (can_id & PGN_PS_MASK) >> 8
+    pf = (can_id & PGN_PF_MASK) >> 16
+
+    is_p2p = pf < 240
+
+    da = ps if is_p2p else J1939_INVALID_ADDRESS
+    pgn = (pf << 8) | (ps if not is_p2p else 0)
+    return sa, da, pgn
+
+def render_frame(time, can_id, data):
+    template = "{} {:#x} {:#x} {:#x} - {}"
+    sa, da, pgn = unpack_can_id_as_j1939(can_id)
+    return template.format(time, sa, da, pgn, data)
+
+if __name__ == '__main__':
+    s = can_socket('can0')
+    while True:
+        time, can_id, data = recv_frame(s)
+        print(render_frame(time, can_id, data))
