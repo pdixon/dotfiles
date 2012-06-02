@@ -8,7 +8,7 @@ set spoolfile = "+INBOX"
 set postponed ="+[Gmail]/Drafts"
 # set trash = ""
 
-mailboxes =INBOX =Transactions
+set imap_check_subscribed
 
 set header_cache =~/.mutt/cache/headers
 set message_cachedir =~/.mutt/cache/bodies
@@ -17,10 +17,18 @@ set certificate_file =~/.mutt/certificates
 set smtp_url = "smtp://phil@dixon.gen.nz@smtp.gmail.com:587/"
 
 bind editor <space> noop
-macro index gi "<change-folder> =INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder> =[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder> =[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
-macro index gd "<change-folder> =[Gmail]/Drafts<enter>" "Go to drafts"
+
+# mutt sidebar settings
+set sidebar_delim = '|'
+set sidebar_width=30
+set sidebar_visible=yes
+color sidebar_new green default
+
+
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+macro index,pager \Ci '<enter-command>toggle sidebar_visible<enter>'
 
 set move = no  #Stop asking to "move read messages to mbox"!
 
