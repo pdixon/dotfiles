@@ -42,8 +42,9 @@ function precmd() {
 
 function preexec() {
     setopt extended_glob
-    local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]}
-    title "$CMD" "%100>...>$2%<<"
+    local CMD=${${~1:gs/%/%%/}[(wr)^(*=*|sudo|-*)]}
+    local SHORT_CMD=${${~2:gs/%/%%/}[(wr)^(*=*|sudo|-*)]}
+    title "$CMD" "%100>...>$SHORT_CMD%<<"
 }
 
 # Line Editor Setup.
