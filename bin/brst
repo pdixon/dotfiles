@@ -1,0 +1,25 @@
+#!/usr/bin/env luajit
+
+function merged(sha)
+   local cmd = 'git merge-base HEAD ' .. sha
+   local merged_ref = io.popen(cmd):read("*a")
+   return string.sub(merged_ref,0,7) == sha
+end
+
+-- Returns a table containing ref_name, unix_time, delta time, sha, comment
+function commit_details(ref_name)
+   local a = {}
+   local cmd = "git log --no-walk --pretty=format:'%ct\n%cr\n%h\n%s' " .. ref_name .. " --"
+   for line in io.popen(cmd):lines() do
+      table.insert(a, line)
+   end
+   return a
+end
+   
+for line in io.popen("git branch"):lines() do
+   local ref_name
+   _, _, ref_name = string.find(line, '[* ]+(.+)')
+   local details = commit_details(ref_name)
+   local is_merged = merged(details[3])
+   print(ref_name, details[3], is_merged)
+end
