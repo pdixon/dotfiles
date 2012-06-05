@@ -1,25 +1,58 @@
 #!/usr/bin/env luajit
 
+function colorise(color, s)
+   return string.format('\e[%sm%s\e[0m',color , string)
+end
+
+function trim(s)
+  return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
+
 function merged(sha)
    local cmd = 'git merge-base HEAD ' .. sha
    local merged_ref = io.popen(cmd):read("*a")
-   return string.sub(merged_ref,0,7) == sha
+   if string.sub(merged_ref,0,7) == sha then
+      return ' '
+   else
+      return nil
+   end
 end
 
--- Returns a table containing ref_name, unix_time, delta time, sha, comment
+-- Returns a table containing unix_time, delta time, sha, comment
 function commit_details(ref_name)
    local a = {}
    local cmd = "git log --no-walk --pretty=format:'%ct\n%cr\n%h\n%s' " .. ref_name .. " --"
    for line in io.popen(cmd):lines() do
-      table.insert(a, line)
+      table.insert(a, trim(line))
    end
    return a
 end
-   
+
+function render_commit(details, max_delta_len, max_ref_len)
+   local date = os.date("%y %b %d, %I:%M", details[1])
+   local delta = string.format("(%s)", details[2])
+   local fmt = "%s %"..(max_delta_len+2).."s %-"..max_ref_len.."s %s %s %s"
+   print(string.format(fmt, date, delta, details[5], merged(details[3]) or '+', details[3], details[4]))
+end
+
+local commits = {}
+
 for line in io.popen("git branch"):lines() do
    local ref_name
    _, _, ref_name = string.find(line, '[* ]+(.+)')
-   local details = commit_details(ref_name)
-   local is_merged = merged(details[3])
-   print(ref_name, details[3], is_merged)
+   local commit = commit_details(ref_name)
+   table.insert(commit, ref_name)
+   table.insert(commits, commit)
+end
+
+table.sort(commits, function(c1, c2) return #c1[5] > #c2[5] end)
+max_ref_len = #commits[1][5]
+
+table.sort(commits, function(c1, c2) return #c1[2] > #c2[2] end)
+max_delta_len = #commits[1][2]
+
+table.sort(commits, function(c1, c2) return c1[1] > c2[1] end)
+
+for _,commit in ipairs(commits) do
+   render_commit(commit, max_delta_len, max_ref_len)
 end
