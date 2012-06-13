@@ -39,22 +39,22 @@
 #define S_green         #859900
 
 !! Dark Theme
-! URxvt*background:            S_base03
-! URxvt*foreground:            S_base00
-! URxvt*fading:                40
-! URxvt*fadeColor:             S_base03
-! URxvt*cursorColor:           S_base1
-! URxvt*pointerColorBackground:S_base01
-! URxvt*pointerColorForeground:S_base1
-
-!! Light Theme
-URxvt*background:            S_base3
-URxvt*foreground:            S_base00
-URxvt*fading:                20
-URxvt*fadeColor:             S_base3
+URxvt*background:            S_base03
+URxvt*foreground:            S_base0
+URxvt*fading:                40
+URxvt*fadeColor:             S_base03
 URxvt*cursorColor:           S_base1
 URxvt*pointerColorBackground:S_base01
 URxvt*pointerColorForeground:S_base1
+
+!! Light Theme
+! URxvt*background:            S_base3
+! URxvt*foreground:            S_base00
+! URxvt*fading:                20
+! URxvt*fadeColor:             S_base3
+! URxvt*cursorColor:           S_base1
+! URxvt*pointerColorBackground:S_base01
+! URxvt*pointerColorForeground:S_base1
 
 !! black dark/light
 URxvt*color0:                S_base02
@@ -89,15 +89,20 @@ URxvt*color7:                S_base2
 URxvt*color15:               S_base3
 
 Emacs.FontBackend: xft
-! Emacs*font: Inconsolata-11
-! Emacs.mode-line.attributeFont: Inconsolata-11
+Emacs*font: Ubuntu Mono-11
+Emacs.mode-line.attributeFont: Ubuntu Mono-11
 
-URxvt*font: xft:Anonymous Pro:size=10
+URxvt*font: xft:Ubuntu Mono-11
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
 URxvt.linespace: 5
 URxvt.internalBorder: 6
 
-
-
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.dpi: 72
