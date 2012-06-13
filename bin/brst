@@ -1,7 +1,7 @@
 #!/usr/bin/env luajit
 
 function colorise(color, s)
-   return string.format('\e[%sm%s\e[0m',color , string)
+   return string.format('\\e[%sm%s\\e[0m',color , string)
 end
 
 function trim(s)
