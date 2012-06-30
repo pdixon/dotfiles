@@ -57,8 +57,8 @@ URxvt*pointerColorForeground:S_base1
 ! URxvt*pointerColorForeground:S_base1
 
 !! black dark/light
-URxvt*color0:                S_base02
-URxvt*color8:                S_base03
+URxvt*color0:                S_base03
+URxvt*color8:                S_base02
 
 !! red dark/light
 URxvt*color1:                S_red
@@ -92,7 +92,7 @@ Emacs.FontBackend: xft
 Emacs*font: Ubuntu Mono-11
 Emacs.mode-line.attributeFont: Ubuntu Mono-11
 
-URxvt*font: xft:Ubuntu Mono-11
+URxvt*font: xft:Ubuntu Mono:pixelsize=15
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
@@ -105,4 +105,4 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-Xft.dpi: 113
+Xft.dpi: 96

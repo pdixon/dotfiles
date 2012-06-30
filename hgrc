@@ -15,6 +15,7 @@ pager=
 bookmarks=
 parentrevspec=
 debugshell=~/dotfiles/lib/debugshell.py
+mq=
 
 [pager]
 pager = LESS='FSRX' less

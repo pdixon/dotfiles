@@ -4,4 +4,4 @@ xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 setxkbmap -layout dvorak -option ctrl:nocaps
 
-exec ~/builds/dwm/dwm
+exec ~/dotfiles/bin/dwm-start

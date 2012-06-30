@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+music(){
+    echo -e "$(mpc current)"
+}
+
+mem(){
+    mem="$(awk '/^-/ {print $3}' <(free -m))"
+    echo -e "$mem"
+}
+
+# CPU line courtesy Procyon:https://bbs.archlinux.org/viewtopic.php?pid=874333#p874333
+cpu(){
+    read cpu a b c previdle rest < /proc/stat
+    prevtotal=$((a+b+c+previdle))
+    sleep 0.5
+    read cpu a b c idle rest < /proc/stat
+    total=$((a+b+c+idle))
+    cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal)))%"
+    echo -e "$cpu"
+}
+
+lda(){
+    lda="$(awk '{print $1,$2,$3}' </proc/loadavg)"
+    echo -e "$lda"
+}
+
+hdd(){
+    hdd="$(df -h /dev/sda{4,6} | awk '/^\/dev/{s=s (s?" ":"") $4 $5} END {printf "%s",s}')"
+    echo -e "$hdd"
+}
+
+pac(){
+    pac="$(pacman -Qu | wc -l)"
+#    if [ $pac == 0 ]; then
+#        echo "0"
+#    else
+        echo -e "$pac"
+#    fi
+}
+
+dte(){
+    dte="$(date "+%a %d %b %H:%M")"
+    echo -e "$dte"
+}
+
+# Pipe to status bar
+xsetroot -name "$(music) [MEM $(mem)] [AV $(lda)] [HDD $(hdd)] [PKG $(pac)] $(dte) "

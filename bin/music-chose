@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+chosen=$(mpc list album | dmenu -i -fn "Ubuntu Mono-13" -nb "#002b36" -nf "#657b83" -sb "#002b56" -sf "#93a1a1")
+
+if [ "$chosen" != "" ]; then
+    mpc clear
+    mpc search album "$chosen" | mpc add
+    mpc play
+fi
