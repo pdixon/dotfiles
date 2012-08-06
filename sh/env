@@ -7,7 +7,8 @@ if [[ `hostname` == "pddev" ]]; then
 fi
 
 if [[ `uname` == "Darwin" ]]; then
-    path=(~/Library/Haskell/bin $path)
+    path=(/opt/homebrew/bin ~/Library/Haskell/bin $path)
+    manpath=(/opt/homebrew/share/man $manpath)
 else
     path=(~/.cabal/bin $path)
 fi

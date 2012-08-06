@@ -1,0 +1,154 @@
+#!/usr/bin/env lua
+
+local lunamark = require'lunamark'
+local alt_getopt = require'alt_getopt'
+local cosmo = require'cosmo'
+local lpeg = require'lpeg'
+local lfs = require'lfs'
+
+local version = [[
+build-site 0.1-dev
+Copyright (C) 2012 Phillip Dixon
+]]
+
+local usage = [[
+Usage: build-site [options] - build a static site from a tree of Markdown files.
+
+Options:
+  --output,-o DIR       The output directory
+  --templates,-t DIR    The templates directory
+  --version,-V          Version information
+  --help,-h             This message
+]]
+
+local long_opts = {
+   output = 'o',
+   templates = 't',
+   version = 'V',
+   help = 'h'
+}
+
+local short_opts = 't:o:Vh'
+
+local optarg,optind = alt_getopt.get_opts(arg, short_opts, long_opts)
+
+if optarg.h then
+   io.write(usage)
+   os.exit(0)
+end
+
+if optarg.V then
+   io.write(version)
+   os.exit(0)
+end
+
+local options = {
+   template_dir = optarg.t or ".templates/",
+   output_dir = optarg.o or ".site/"
+}
+
+-- setup the metadata handling
+function create_metadata_parser()
+   local P, S, C, Cg, Cf, Cc = lpeg.P, lpeg.S, lpeg.C, lpeg.Cg, lpeg.Cf, lpeg.Cc
+   local nl = P'\n'
+   local fence = P'---' * nl
+
+   local key = C((P(1)-S('\t\n :'))^1)
+   local value = C((P(1)-nl)^1)
+   local pair = Cg(key * P': ' * value) * nl 
+   local list = Cf(Cc({}) * pair^0, rawset)
+   local header = fence * list * fence
+   
+   local rest = C(P(1)^0)
+   local doc = header * rest
+
+   return function (str) return doc:match(str) end 
+end
+
+-- setup the markdown handling
+function create_markdown_parser()
+   local writer = lunamark.writer.html.new()
+
+   local function expandtabs(s)
+      if s:find("\t") then
+         return s:gsub("[^\n]*",expand_tabs_in_line)
+      else
+         return s
+      end
+   end
+
+   local function add_fenced(syntax)
+      local P, S, Cs, C = lpeg.P, lpeg.S, lpeg.Cs, lpeg.C
+      
+      local newline = P("\n")
+      local linechar = P(1-newline)
+      local line = C(linechar^0 * newline)
+      local blank_line = P("\t ")^0 * newline / "\n"
+      local blank_lines = blank_line^0
+      local fence = P("~")^3
+      local properties = P("{") * P(1-P("}"))^1 * P("}")
+      
+      local fenced_code = Cs(((fence * properties^-1 * newline)/"") *
+                             (line - fence)^1 *
+                             ((fence * newline)/"")
+                            ) / expandtabs / writer.verbatim
+      syntax.Block = fenced_code + syntax.Block
+      return syntax
+   end
+
+   return lunamark.reader.markdown.new(writer, { smart = true,
+                                                 alter_syntax=add_fenced
+                                               })
+end
+
+local header_parser = create_metadata_parser()
+local body_parser = create_markdown_parser()
+
+-- read the posts
+function get_posts(path)
+   local posts = {}
+   for file in lfs.dir(path) do
+      if string.find(file, '(.)markdown$') then
+         local filepath = path .. "/" .. file
+         local header, rest = header_parser(assert(io.open(filepath):read('*a')))
+         local post = {
+            name = filepath,
+            modified = lfs.attributes(filepath).modification,
+            header = header,
+            body = body_parser(rest)
+         }
+         table.insert(posts, post)
+      end
+   end
+   return posts
+end
+
+-- write the posts
+function generate_pages(options, posts)
+   template = assert(io.open(options["templates"].."post.html"):read('*a'))
+   for _, post in posts do
+      render = cosmo.fill(template, post)
+   end
+end
+
+-- generate the feed
+function generate_feed(options, posts)
+end
+
+-- generate the homepage
+function generate_homepage(options, posts)
+end
+
+-- generate the archive
+function generate_archive(options, posts)
+end
+
+print"Reading files..."
+posts = get_posts("./posts")
+print(string.format("Read %d posts", #posts))
+print"Building Site..."
+generate_pages(options, posts)
+generate_homepage(options, posts)
+generate_archive(options, posts)
+generate_feed(options, posts)
+print"Done."
