@@ -92,7 +92,7 @@ Emacs.FontBackend: xft
 Emacs*font: Ubuntu Mono-11
 Emacs.mode-line.attributeFont: Ubuntu Mono-11
 
-URxvt*font: xft:Ubuntu Mono:pixelsize=15
+URxvt*font: xft:Ubuntu Mono:pixelsize=15,xft:Menlo
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
