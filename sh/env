@@ -19,10 +19,10 @@ export EDITOR=my-editor
 
 export ALTERNATE_EDITOR=vim
 
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
+#export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
  
-hash rbenv 2> /dev/null && eval "$(rbenv init -)"
+#hash rbenv 2> /dev/null && eval "$(rbenv init -)"
 
