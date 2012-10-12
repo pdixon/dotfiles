@@ -37,7 +37,7 @@ end
 
 local commits = {}
 
-for line in io.popen("git branch -r"):lines() do
+for line in io.popen("git branch -a"):lines() do
    local ref_name
    _, _, ref_name = string.find(line, '[* ]+(.+)')
    if (not string.find(ref_name, '->')) then
