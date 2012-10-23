@@ -1,4 +1,4 @@
-#!/usr/bin/env lua
+#!/usr/bin/env luajit
 
 local lunamark = require'lunamark'
 local alt_getopt = require'alt_getopt'
@@ -43,8 +43,8 @@ if optarg.V then
 end
 
 local options = {
-   template_dir = optarg.t or ".templates/",
-   output_dir = optarg.o or ".site/"
+   template_dir = optarg.t or "templates/",
+   output_dir = optarg.o or "site/"
 }
 
 -- setup the metadata handling
@@ -55,20 +55,24 @@ function create_metadata_parser()
 
    local key = C((P(1)-S('\t\n :'))^1)
    local value = C((P(1)-nl)^1)
-   local pair = Cg(key * P': ' * value) * nl 
+   local pair = Cg(key * P': ' * value) * nl
    local list = Cf(Cc({}) * pair^0, rawset)
    local header = fence * list * fence
-   
+
    local rest = C(P(1)^0)
    local doc = header * rest
 
-   return function (str) return doc:match(str) end 
+   return function (str) return doc:match(str) end
 end
 
 -- setup the markdown handling
 function create_markdown_parser()
    local writer = lunamark.writer.html.new()
 
+   function writer.verbatim_class(s, class)
+    return {'<pre><code class="'..class..'"">', writer.string(s), "</code></pre>"}
+  end
+   
    local function expandtabs(s)
       if s:find("\t") then
          return s:gsub("[^\n]*",expand_tabs_in_line)
@@ -79,7 +83,7 @@ function create_markdown_parser()
 
    local function add_fenced(syntax)
       local P, S, Cs, C = lpeg.P, lpeg.S, lpeg.Cs, lpeg.C
-      
+
       local newline = P("\n")
       local linechar = P(1-newline)
       local line = C(linechar^0 * newline)
@@ -87,7 +91,7 @@ function create_markdown_parser()
       local blank_lines = blank_line^0
       local fence = P("~")^3
       local properties = P("{") * P(1-P("}"))^1 * P("}")
-      
+
       local fenced_code = Cs(((fence * properties^-1 * newline)/"") *
                              (line - fence)^1 *
                              ((fence * newline)/"")
@@ -97,12 +101,58 @@ function create_markdown_parser()
    end
 
    return lunamark.reader.markdown.new(writer, { smart = true,
+                                                 notes = true,
+                                                 definition_lists = true,
                                                  alter_syntax=add_fenced
                                                })
 end
 
 local header_parser = create_metadata_parser()
 local body_parser = create_markdown_parser()
+
+
+function string:split(pat)
+  local st, g = 1, self:gmatch("()("..pat..")")
+  local function getter(self, segs, seps, sep, cap1, ...)
+    st = sep and seps + #sep
+    return self:sub(segs, (seps or 0) - 1), cap1 or sep, ...
+  end
+  local function splitter(self)
+    if st then return getter(self, st, g()) end
+  end
+  return splitter, self
+end
+
+-- return the dir part of a path.
+-- i.e dirname("./posts/blah/foobar.markdown") -> "post/blah"
+function dirname(path)
+   return path:match("(.*)/")
+end
+
+function basename(path)
+   return path:match(".*/(.*)")
+end
+
+function strip_ext(path)
+   return path:match("(.*)%.")
+end
+
+function build_path(...)
+  return table.concat({...}, "/")
+end
+
+function lfs.mkdir_p(path)
+   print("mkdir: "..path)
+  local current
+  for dir in string.split(path, "/") do
+    if not current then
+      current = dir
+    else
+      current = build_path(current, dir)
+    end
+    lfs.mkdir(current)
+  end
+end
 
 -- read the posts
 function get_posts(path)
@@ -125,9 +175,15 @@ end
 
 -- write the posts
 function generate_pages(options, posts)
-   template = assert(io.open(options["templates"].."post.html"):read('*a'))
-   for _, post in posts do
-      render = cosmo.fill(template, post)
+   local template = assert(io.open(options["template_dir"].."post.html"):read('*a'))
+   for _, post in ipairs(posts) do
+      local dir = options["output_dir"]..dirname(post["name"])
+      local base = strip_ext(basename(post["name"]))
+      local rendered = cosmo.fill(template, post)
+      lfs.mkdir_p(dir)
+      local out = assert(io.open(dir..base..".html","w+"))
+      out:write(rendered)
+      out:close()
    end
 end
 
@@ -144,7 +200,7 @@ function generate_archive(options, posts)
 end
 
 print"Reading files..."
-posts = get_posts("./posts")
+posts = get_posts("posts")
 print(string.format("Read %d posts", #posts))
 print"Building Site..."
 generate_pages(options, posts)
