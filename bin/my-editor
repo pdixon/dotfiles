@@ -6,4 +6,4 @@ else
     EMACSCLIENT=emacsclient
 fi
 
-exec $EMACSCLIENT -t $@
+exec $EMACSCLIENT $@

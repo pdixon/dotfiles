@@ -1,0 +1,24 @@
+#!/bin/luajit
+
+local music = ""
+
+local meminfo_line = "^([%w_%(%)]+):%s+(%d+)"
+
+function mem()
+   local meminfo = {}
+   for line in io.lines("/proc/meminfo") do
+      k,v = string.match(line, meminfo_line)
+      meminfo[k] = tonumber(v)
+   end
+   local mem_used = (meminfo["MemTotal"] - meminfo["MemFree"]) / 1024
+   local buffers_cache = (meminfo["Buffers"] + meminfo["Cached"]) / 1024
+   return tostring(mem_used - buffers_cache), tostring(meminfo["MemTotal"]/1024)
+end
+
+local date = os.date("%a %d %b %H:%M")
+
+local info = string.format("%s [MEM %s/%s] %s", music, mem(), date)
+
+local cmd = string.format("xsetroot -name '%s'", info)
+
+os.execute(cmd)

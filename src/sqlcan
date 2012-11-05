@@ -1,4 +1,4 @@
-#!/home/pdixon/builds/cpython/python
+#!/usr/bin/python
 
 import sqlite3
 

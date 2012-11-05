@@ -31,11 +31,11 @@ hdd(){
 }
 
 pac(){
-    pac="$(pacman -Qu | wc -l)"
+#    pac="$(pacman -Qu | wc -l)"
 #    if [ $pac == 0 ]; then
 #        echo "0"
 #    else
-        echo -e "$pac"
+#        echo -e "$pac"
 #    fi
 }
 
