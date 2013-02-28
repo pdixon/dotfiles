@@ -61,17 +61,21 @@ function info_print () {
 function precmd() {
     vcs_info
 
-    if [[ $TERM == screen* ]] ; then
-        if [[ -n ${vcs_info_msg_1_} ]] ; then
-            ESC_print ${vcs_info_msg_1_}
-        else
-            ESC_print "zsh"
-        fi
-    fi
-
     case $TERM in
+        (screen*)
+            if [[ -n ${vcs_info_msg_1_} ]] ; then
+                ESC_print ${vcs_info_msg_1_}
+            else
+                ESC_print "zsh"
+            fi
+            ;;
         (xterm*|rxvt*)
             set_title ${(%):-"%n@%m"}
+            ;;
+        (eterm*)
+            echo -e "\033AnSiTu" "$LOGNAME"
+            echo -e "\033AnSiTc" "$(pwd)"
+            echo -e "\033AnSiTh" "$(hostname)"
             ;;
     esac
 }
@@ -80,12 +84,11 @@ function preexec() {
     emulate -L zsh
     setopt extended_glob
 
-    if [[ $TERM == screen* ]] ; then
-        local CMD="${1[(wr)^(*=*|sudo|ssh|-*)]}"
-        ESC_print ${CMD}
-    fi
-
     case $TERM in
+        (screen*)
+            local CMD="${1[(wr)^(*=*|sudo|ssh|-*)]}"
+            ESC_print ${CMD}
+            ;;
         (xterm*|rxvt*)
             set_title ${(%):-"%n@%m"} "$1"
             ;;
