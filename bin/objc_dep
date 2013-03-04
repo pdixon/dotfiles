@@ -41,6 +41,10 @@ def dependencies_in_project(path, ext, exclude):
     regex_exclude = None
     if exclude:
         regex_exclude = re.compile(exclude)
+
+    regex_exclude = None
+    if exclude:
+        regex_exclude = re.compile(exclude)
     
     for root, dirs, files in os.walk(path):
 
