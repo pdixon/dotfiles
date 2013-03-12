@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for item in bashrc gitconfig hgrc vim vimrc bash_profile inputrc pythonrc.py screenrc zshrc conkyrc Xresources tmux.conf
+for item in bashrc gitconfig hgrc vim vimrc bash_profile inputrc pythonrc.py zshrc Xresources tmux.conf i3 dunstrc
 do
 	if [ -h ~/."$item" ]
 	then
