@@ -142,3 +142,5 @@ compinit
 compdef '_files -g "*.mdwn"' mdwn2html
 compdef '_files -g "*.mdwn"' mdwn2odt
 compdef '_files -g "*.mdwn"' markdown2pdf
+
+autoload zmv
