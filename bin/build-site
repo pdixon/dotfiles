@@ -1,10 +1,11 @@
 #!/usr/bin/env luajit
 
-local lunamark = require'lunamark'
-local alt_getopt = require'alt_getopt'
-local cosmo = require'cosmo'
-local lpeg = require'lpeg'
-local lfs = require'lfs'
+require 'luarocks.loader'
+local lunamark = require 'lunamark'
+local alt_getopt = require 'alt_getopt'
+local cosmo = require 'cosmo'
+local lpeg = require 'lpeg'
+local lfs = require 'lfs'
 
 local version = [[
 build-site 0.1-dev
@@ -181,7 +182,7 @@ function generate_pages(options, posts)
       local base = strip_ext(basename(post["name"]))
       local rendered = cosmo.fill(template, post)
       lfs.mkdir_p(dir)
-      local out = assert(io.open(dir..base..".html","w+"))
+      local out = assert(io.open(dir.."/"..base..".html","w+"))
       out:write(rendered)
       out:close()
    end
@@ -199,6 +200,10 @@ end
 function generate_archive(options, posts)
 end
 
+function copy_media()
+   os.execute("cp -r media "..options['output_dir'])
+end
+
 print"Reading files..."
 posts = get_posts("posts")
 print(string.format("Read %d posts", #posts))
@@ -207,4 +212,5 @@ generate_pages(options, posts)
 generate_homepage(options, posts)
 generate_archive(options, posts)
 generate_feed(options, posts)
+copy_media()
 print"Done."
