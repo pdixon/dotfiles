@@ -37,12 +37,14 @@ end
 
 local commits = {}
 
-for line in io.popen("git branch"):lines() do
+for line in io.popen("git branch -a"):lines() do
    local ref_name
    _, _, ref_name = string.find(line, '[* ]+(.+)')
-   local commit = commit_details(ref_name)
-   table.insert(commit, ref_name)
-   table.insert(commits, commit)
+   if (not string.find(ref_name, '->')) then
+      local commit = commit_details(ref_name)
+      table.insert(commit, ref_name)
+      table.insert(commits, commit)
+   end
 end
 
 table.sort(commits, function(c1, c2) return #c1[5] > #c2[5] end)

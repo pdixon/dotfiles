@@ -26,5 +26,8 @@
     co = checkout
     sl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
     gl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
+
 [diff]
 	renames = copies
+[push]
+	default = matching
