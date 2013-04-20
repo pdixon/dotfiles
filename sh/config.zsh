@@ -21,7 +21,7 @@ function git_commit_id() {
 
 function git_repo_clean() {
     if [[ -n $(git status --short 2> /dev/null) ]]; then
-        echo "✗"
+        echo "x"
     fi
 }
 
@@ -29,7 +29,7 @@ function git_repo_clean() {
 # Prompt set up.
 PROMPT='
 %~
-→ '
+> '
 
 if [[ $TERM == dumb ]] ; then
     RPROMPT='$(git_current_branch) $(git_commit_id) $(git_repo_clean)'
