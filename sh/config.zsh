@@ -1,41 +1,24 @@
-# Use nice names for colors
-autoload -U colors
-colors
 setopt prompt_subst
 
 autoload -U vcs_info
-zstyle ':vcs_info:*' enable hg git
+
 zstyle ':vcs_info:*' max-exports 2
-zstyle ':vcs_info:*' actionformats "(%s%)-[%b|%a] " "zsh: %r"
-zstyle ':vcs_info:*' formats       "(%s%)-[%b] "    "zsh: %r"
-
-# Prompt helpers
-function git_current_branch() {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "${ref#refs/heads/}"
-}
-
-function git_commit_id() {
-    echo "$(git rev-parse --short HEAD 2>/dev/null)"
-}
-
-function git_repo_clean() {
-    if [[ -n $(git status --short 2> /dev/null) ]]; then
-        echo "x"
-    fi
-}
-
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' use-simple false
+zstyle ':vcs_info:*' enable hg git
+zstyle ':vcs_info:*' unstagedstr "*"
+zstyle ':vcs_info:*' stagedstr "*"
+zstyle ':vcs_info:hg:*' branchformat "%b"
+zstyle ':vcs_info:*' actionformats "%b %.8i %a %c%u" "zsh: %r"
+zstyle ':vcs_info:*' formats       "%b %.8i %c%u"    "zsh: %r"
 
 # Prompt set up.
 PROMPT='
 %~
 > '
 
-if [[ $TERM == dumb ]] ; then
-    RPROMPT='$(git_current_branch) $(git_commit_id) $(git_repo_clean)'
-else
-    RPROMPT='%{$fg[white]%} $(git_current_branch) $(git_commit_id) $(git_repo_clean)%{$reset_color%}'
-fi
+RPROMPT='${vcs_info_msg_0_}'
 
 # Title handling
 # Based on grml zshrc
