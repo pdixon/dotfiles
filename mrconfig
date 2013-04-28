@@ -1,0 +1,21 @@
+[DEFAULT]
+lib =
+    isLinux() {
+              test "$(uname)" = Linux
+    }
+    isDarwin() {
+              test "$(uname)" = Darwin
+    }
+
+[dotfiles]
+checkout = git clone git@github.com:pdixon/dotfiles.git
+
+[.emacs.d]
+checkout = git clone git@github.com:pdixon/emacs.d.git
+
+[personal/phil.dixon.gen.nz]
+checkout = git clone git@github.com:pdixon/phil.dixon.gen.nz.git
+
+[personal/src/pmixer]
+skip = ! isLinux
+checkout = git clone git@github.com:pdixon/pmixer.git
