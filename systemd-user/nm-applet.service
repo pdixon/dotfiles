@@ -1,0 +1,6 @@
+[Unit]
+Description=NetworkManager Applet
+
+[Service]
+BusName=org.gnome.network_manager_applet
+ExecStart=@/usr/bin/nm-applet nm-applet

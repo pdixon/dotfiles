@@ -1,0 +1,7 @@
+[Unit]
+Description=xrdb
+Requires=xorg.target
+After=xorg.target
+
+[Service]
+ExecStart=/usr/bin/xbindkeys --nodaemon
