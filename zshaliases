@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 # Command Enhancements
 
 alias e=$EDITOR
@@ -7,9 +8,9 @@ function se () {
 }
 
 # Utility
-alias reload='source ~/dotfiles/sh/aliases'
-alias ea='$EDITOR ~/dotfiles/sh/aliases && reload' # Edit aliases
-alias ee="$EDITOR ~/dotfiles/sh/env"
+alias reload='source ~/dotfiles/zshaliases'
+alias ea='$EDITOR ~/dotfiles/zshaliases && reload' # Edit aliases
+alias ee="$EDITOR ~/dotfiles/zshenv"
 
 # BSD and GNU ls don't have the same args !?!
 if [[ `uname` == "Darwin" ]]
