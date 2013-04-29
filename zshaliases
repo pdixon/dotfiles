@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 # Command Enhancements
 
 alias e=$EDITOR
@@ -7,9 +8,9 @@ function se () {
 }
 
 # Utility
-alias reload='source ~/dotfiles/sh/aliases'
-alias ea='$EDITOR ~/dotfiles/sh/aliases && reload' # Edit aliases
-alias ee="$EDITOR ~/dotfiles/sh/env"
+alias reload='source ~/dotfiles/zshaliases'
+alias ea='$EDITOR ~/dotfiles/zshaliases && reload' # Edit aliases
+alias ee="$EDITOR ~/dotfiles/zshenv"
 
 # BSD and GNU ls don't have the same args !?!
 if [[ `uname` == "Darwin" ]]
@@ -24,19 +25,19 @@ alias cdd='cd -'  # goto last dir cd'ed from
 alias cl='clear; l'
 alias h='history'
 
-alias l='ls -h'  
+alias l='ls -h'
 alias la="ls -Al"
 alias l.='ls -d .[^.]*'
 alias lt='ls -lt' # sort with recently modified first
 alias md='mkdir -p'
 
-function take() { 
+function take() {
     mkdir -p "$1"
-    cd "$1" 
+    cd "$1"
 }
 
 function zipr() {
-  zip -r $1.zip $1
+    zip -r $1.zip $1
 }
 
 # Finder
@@ -52,8 +53,8 @@ alias tm='top -o vsize' # memory
 # Text editing
 # Regenerate TAGS file from file arguments
 function ct() {
-  rm -f TAGS
-  etags --append --output=TAGS $*
+    rm -f TAGS
+    etags --append --output=TAGS $*
 }
 
 
@@ -100,57 +101,56 @@ function n () {
 }
 
 function nls () {
- print -l ~/Dropbox/Elements/*$1*.mdwn(:r:t)
+    print -l ~/Dropbox/Elements/*$1*.mdwn(:r:t)
 }
 
 # Zenburn colour scheme
 function zenburn {
-	if [ "$TERM" = "linux" ]; then
-		echo -en "\e]P01E2320" #black
-		echo -en "\e]P8709080" #darkgrey
-		echo -en "\e]P1705050" #darkred
-		echo -en "\e]P9dca3a3" #red
-		echo -en "\e]P260b48a" #darkgreen
-		echo -en "\e]PAc3bf9f" #green
-		echo -en "\e]P3dfaf8f" #brown
-		echo -en "\e]PBf0dfaf" #yellow
-		echo -en "\e]P4506070" #darkblue
-		echo -en "\e]PC94bff3" #blue
-		echo -en "\e]P5dc8cc3" #darkmagenta
-		echo -en "\e]PDec93d3" #magenta
-		echo -en "\e]P68cd0d3" #darkcyan
-		echo -en "\e]PE93e0e3" #cyan
-		echo -en "\e]P7dcdccc" #lightgrey
-		echo -en "\e]PFffffff" #white
-		clear #for background artifacting
-	fi
+    if [ "$TERM" = "linux" ]; then
+        echo -en "\e]P01E2320" #black
+        echo -en "\e]P8709080" #darkgrey
+        echo -en "\e]P1705050" #darkred
+        echo -en "\e]P9dca3a3" #red
+        echo -en "\e]P260b48a" #darkgreen
+        echo -en "\e]PAc3bf9f" #green
+        echo -en "\e]P3dfaf8f" #brown
+        echo -en "\e]PBf0dfaf" #yellow
+        echo -en "\e]P4506070" #darkblue
+        echo -en "\e]PC94bff3" #blue
+        echo -en "\e]P5dc8cc3" #darkmagenta
+        echo -en "\e]PDec93d3" #magenta
+        echo -en "\e]P68cd0d3" #darkcyan
+        echo -en "\e]PE93e0e3" #cyan
+        echo -en "\e]P7dcdccc" #lightgrey
+        echo -en "\e]PFffffff" #white
+        clear #for background artifacting
+    fi
 }
 
 # Normal colour scheme
 function normalcolours {
-	if [ "$TERM" = "linux" ]; then
-		echo -en "\e]P0000000" #black
-		echo -en "\e]P8555555" #darkgrey
-		echo -en "\e]P1AA0000" #darkred
-		echo -en "\e]P9FF5555" #red
-		echo -en "\e]P200AA00" #darkgreen
-		echo -en "\e]PA55FF55" #green
-		echo -en "\e]P3AA5500" #brown
-		echo -en "\e]PBFFFF55" #yellow
-		echo -en "\e]P40000AA" #darkblue
-		echo -en "\e]PC5555FF" #blue
-		echo -en "\e]P5AA00AA" #darkmagenta
-		echo -en "\e]PDFF55FF" #magenta
-		echo -en "\e]P600AAAA" #darkcyan
-		echo -en "\e]PE55FFFF" #cyan
-		echo -en "\e]P7AAAAAA" #lightgrey
-		echo -en "\e]PFFFFFFF" #white
-		clear #for background artifacting
-	fi
+    if [ "$TERM" = "linux" ]; then
+        echo -en "\e]P0000000" #black
+        echo -en "\e]P8555555" #darkgrey
+        echo -en "\e]P1AA0000" #darkred
+        echo -en "\e]P9FF5555" #red
+        echo -en "\e]P200AA00" #darkgreen
+        echo -en "\e]PA55FF55" #green
+        echo -en "\e]P3AA5500" #brown
+        echo -en "\e]PBFFFF55" #yellow
+        echo -en "\e]P40000AA" #darkblue
+        echo -en "\e]PC5555FF" #blue
+        echo -en "\e]P5AA00AA" #darkmagenta
+        echo -en "\e]PDFF55FF" #magenta
+        echo -en "\e]P600AAAA" #darkcyan
+        echo -en "\e]PE55FFFF" #cyan
+        echo -en "\e]P7AAAAAA" #lightgrey
+        echo -en "\e]PFFFFFFF" #white
+        clear #for background artifacting
+    fi
 }
 
 # UD Prog helpers
 alias write_rem50='make write_remote_arm-Release-rem50_epra2'
 alias write_pmle='make write_powermodule_arm-Release-pmle_epra1'
 alias write_lak='make write_unidongle_arm-Release-unidongle_epra2'
-

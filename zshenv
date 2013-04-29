@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 # Set PATH, CDPATH, EDITOR, etc.
 
 typeset -U path
@@ -18,12 +19,7 @@ path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
 
 export EDITOR=my-editor
 
-export ALTERNATE_EDITOR=vim
-
-#export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
- 
-#hash rbenv 2> /dev/null && eval "$(rbenv init -)"
 

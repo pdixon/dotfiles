@@ -39,5 +39,3 @@ set print_command = "muttprint %s"
 
 set edit_headers
 set editor = "$EDITOR -nw %s"
-
-source mutt-colors-solarized-light-16.muttrc
