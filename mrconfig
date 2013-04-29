@@ -1,3 +1,4 @@
+# -*- mode: conf-unix; -*-
 [DEFAULT]
 lib =
     isLinux() {
@@ -14,8 +15,13 @@ checkout = git clone git@github.com:pdixon/dotfiles.git
 checkout = git clone git@github.com:pdixon/emacs.d.git
 
 [personal/phil.dixon.gen.nz]
+skip = lazy
 checkout = git clone git@github.com:pdixon/phil.dixon.gen.nz.git
 
 [personal/src/pmixer]
 skip = ! isLinux
 checkout = git clone git@github.com:pdixon/pmixer.git
+
+[personal/src/pdmpkeys]
+skip = ! isDarwin
+checkout = git clone git@github.com:pdixon/pdmpkeys.git
