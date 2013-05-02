@@ -167,3 +167,7 @@ bar {
 hide_edge_borders vertical
 
 for_window [class="^Chromium$"] border none
+
+exec --no-startup-id urxvt
+exec emacs
+exec chromium
