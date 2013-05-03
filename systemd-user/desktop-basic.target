@@ -1,9 +1,9 @@
 [Unit]
 Description=Basic Graphical Desktop
 
-Requires=xorg.target
+#Requires=xorg.target
 #Requires=dbus.service
-After=xorg.target
+#After=xorg.target
 
 Wants=setkbdmap.service
 Wants=xrdb.service

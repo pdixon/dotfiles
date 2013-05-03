@@ -1,12 +1,13 @@
 #!/bin/sh
 
-xrdb -merge ~/.Xresources
-xmodmap ~/.Xmodmap
-setxkbmap -layout dvorak -option ctrl:nocaps
+# xrdb -merge ~/.Xresources
+# xmodmap ~/.Xmodmap
+# setxkbmap -layout dvorak -option ctrl:nocaps
 
-xbindkeys
+# xbindkeys
 
-udiskie &
-nm-applet &
+# udiskie &
+# nm-applet &
 
-exec i3
+# exec i3
+exec systemd --user
