@@ -1,7 +1,7 @@
 [Unit]
 Description=setkbdmap
-#Requires=xorg.target
-#After=xorg.target
+Requires=xorg.target
+After=xorg.target
 
 [Service]
 Type=oneshot

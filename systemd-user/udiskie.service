@@ -1,9 +1,5 @@
 [Unit]
 Description=handle automounting
-Requires=dbus.service
 
 [Service]
 ExecStart=/usr/bin/udiskie
-
-[Install]
-WantedBy=default.target
