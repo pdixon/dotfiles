@@ -1,0 +1,5 @@
+[Unit]
+Description=handle automounting
+
+[Service]
+ExecStart=/usr/bin/udiskie

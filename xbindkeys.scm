@@ -1,6 +1,10 @@
-;(xbindkey '(XF86AudioRaiseVolume) )
-;(xbindkey '(XF86AudioLowerVolume) )
-;(xbindkey '(XF86AudioMute) )
+(xbindkey '(XF86AudioRaiseVolume) "pactl set-sink-volume 0 -- '+5%'")
+(xbindkey '(XF86AudioLowerVolume) "pactl set-sink-volume 0 -- '-5%'")
+(xbindkey '(XF86AudioMute) "pactl set-sink-volume 0 0")
+
+(xbindkey '(XF86AudioPlay) "mpc toggle")
+(xbindkey '(XF86AudioNext) "mpc next")
+(xbindkey '(XF86AudioPrev) "mpc prev")
 
 (xbindkey '(mod4 F10) "mpc prev")
 (xbindkey '(mod4 F11) "mpc toggle")

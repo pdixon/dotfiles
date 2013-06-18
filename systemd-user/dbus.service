@@ -1,0 +1,9 @@
+[Unit]
+Description=D-Bus Session Daemon
+Requires=dbus.socket
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation
+ExecReload=/usr/bin/dbus-send --session --print-reply --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig
+TimeoutStopSec=2

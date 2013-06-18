@@ -1,0 +1,8 @@
+[Unit]
+Description=i3 Desktop Session
+
+Requires=desktop-basic.target
+Requires=i3.service
+
+[Install]
+WantedBy=default.target

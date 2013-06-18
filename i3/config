@@ -20,6 +20,13 @@ set $mod Mod4
 # chose an xft font, such as:
 font pango:DejaVu Sans Mono 10
 
+# Zenburn colours
+#class                      border  bkgrd   text
+client.focused              #6f6f6f #3f3f3f #f0dfaf
+client.focused_inactive     #3f3f3f #3f3f3f #dcdccc
+client.unfocused            #3f3f3f #3f3f3f #dcdccc
+client.urgent               #dca3a3 #3f3f3f #cc9393
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -81,6 +88,8 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindcode $mod+d focus child
+
+workspace_auto_back_and_forth yes
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -144,8 +153,21 @@ bindsym $mod+p mode "resize"
 bar {
     position top
     status_command i3status -c ~/.i3/status.cfg
+    colors {
+        background #3f3f3f
+        statusline #dcdccc
+
+        focused_workspace  #6f6f6f #3f3f3f #f0dfaf
+        active_workspace   #3f3f3f #3f3f3f #ffcfaf
+        inactive_workspace #3f3f3f #3f3f3f #dcdccc
+        urgent_workspace   #cc9393 #3f3f3f #cc9393
+    }
 }
 
 hide_edge_borders vertical
 
 for_window [class="^Chromium$"] border none
+
+exec --no-startup-id urxvt
+exec emacs
+exec chromium

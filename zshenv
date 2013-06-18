@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 # Set PATH, CDPATH, EDITOR, etc.
 
 typeset -U path
@@ -7,7 +8,7 @@ if [[ `hostname` == "pddev3" ]]; then
 fi
 
 if [[ `uname` == "Darwin" ]]; then
-    path=(/usr/local/texlive/2012basic/bin/universal-darwin /opt/homebrew/bin ~/Library/Haskell/bin $path)
+    path=(/usr/texbin ~/Library/Python/2.7/bin /opt/homebrew/bin ~/Library/Haskell/bin $path)
     manpath=(/opt/homebrew/share/man $manpath)
     export LUA_PATH="/opt/homebrew/share/lua/5.1/?.lua;;"
 else
@@ -18,12 +19,7 @@ path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
 
 export EDITOR=my-editor
 
-export ALTERNATE_EDITOR=vim
-
-#export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
- 
-#hash rbenv 2> /dev/null && eval "$(rbenv init -)"
 

@@ -1,0 +1,20 @@
+[Unit]
+Description=Basic Graphical Desktop
+
+Requires=xorg.target
+#Requires=dbus.service
+After=xorg.target
+
+Wants=setkbdmap.service
+Wants=xrdb.service
+Wants=xbindkeys.service
+
+Wants=pulse.service
+
+#Wants=bluetooth-applet.service
+Wants=nm-applet.service
+Wants=udiskie.service
+
+Wants=xautolock.service
+
+Wants=ssh-agent.service
