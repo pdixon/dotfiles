@@ -23,3 +23,8 @@ pager = LESS='FSRX' less
 [extdiff]
 cmd.opendiff = opendiff -w
 
+[alias]
+nudge = push --rev .
+show = log --color=auto -pr
+slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+sl = slog
