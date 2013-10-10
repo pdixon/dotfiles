@@ -1,8 +1,0 @@
-[Unit]
-Description=setkbdmap
-Requires=xorg.target
-After=xorg.target
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/setxkbmap -layout dvorak -option ctrl:nocaps

@@ -1,7 +1,0 @@
-[Unit]
-Description=Simple tiling/stacking/tabbed window manager
-Requires=desktop-basic.target
-After=desktop-basic.target
-
-[Service]
-ExecStart=/usr/bin/i3
