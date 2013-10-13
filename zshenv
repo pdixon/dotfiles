@@ -5,7 +5,7 @@ setopt NO_GLOBAL_RCS
 
 typeset -U path
 
-path=(/usr/local/sbin /usr/local/bin /usr/bin)
+path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
 
 if [[ `hostname` == "pddev3" ]]; then
    path=(/usr/local/bin /opt/codesourcery-g++-arm-none-eabi/4.5.2-2011.03-42/bin $path)
