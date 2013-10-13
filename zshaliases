@@ -3,9 +3,12 @@
 
 alias e=$EDITOR
 
-function se () {
+function es () {
     sudo -e $@
 }
+
+alias magit='emacsclient -a "" -n -e "(magit-status \"$(pwd)\")" > /dev/null'
+alias dired='emacsclient -a "" -n -e "(dired \"$(pwd)\")" > /dev/null'
 
 # Utility
 alias reload='source ~/dotfiles/zshaliases'
