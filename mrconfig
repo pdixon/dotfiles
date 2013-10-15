@@ -8,6 +8,9 @@ lib =
               test "$(uname)" = Darwin
     }
 
+[ALIAS]
+pull = update
+
 [dotfiles]
 checkout = git clone git@github.com:pdixon/dotfiles.git
 
