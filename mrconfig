@@ -1,12 +1,12 @@
 # -*- mode: conf-unix; -*-
 [DEFAULT]
-lib =
-    isLinux() {
-              test "$(uname)" = Linux
-    }
-    isDarwin() {
-              test "$(uname)" = Darwin
-    }
+lib = 
+	   isLinux() {
+	             test "$(uname)" = Linux
+	   }
+	   isDarwin() {
+	             test "$(uname)" = Darwin
+	   }
 
 [ALIAS]
 pull = update
@@ -31,3 +31,6 @@ checkout = git clone git@github.com:pdixon/pmixer.git
 [personal/src/pdmpkeys]
 skip = ! isDarwin
 checkout = git clone git@github.com:pdixon/pdmpkeys.git
+
+[work/training]
+checkout = git clone 'pdixon@dixon.gen.nz:/srv/git/dcl-training.git' 'training'
