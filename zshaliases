@@ -15,13 +15,13 @@ alias reload='source ~/dotfiles/zshaliases'
 alias ea='$EDITOR ~/dotfiles/zshaliases && reload' # Edit aliases
 alias ee="$EDITOR ~/dotfiles/zshenv"
 
-# BSD and GNU ls don't have the same args !?!
-# if [[ `uname` == "Darwin" ]]
-# then
-#     alias ls='ls -G'
-# else
+
+if [[ `uname` == "Darwin" ]]
+then
     alias ls='gls --color=auto'
-# fi
+else
+    alias ls='ls --color=auto'
+fi
 
 alias c='clear'
 alias cdd='cd -'  # goto last dir cd'ed from
