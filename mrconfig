@@ -8,6 +8,9 @@ lib =
 	             test "$(uname)" = Darwin
 	   }
 
+[ALIAS]
+pull = update
+
 [dotfiles]
 checkout = git clone git@github.com:pdixon/dotfiles.git
 
@@ -32,3 +35,6 @@ checkout = git clone git@github.com:pdixon/pdmpkeys.git
 [personal/src/PKGBUILDs]
 skip = ! isLinux
 checkout = git clone 'git@github.com:pdixon/PKGBUILDs.git' 'PKGBUILDs'
+
+[work/training]
+checkout = git clone 'pdixon@dixon.gen.nz:/srv/git/dcl-training.git' 'training'
