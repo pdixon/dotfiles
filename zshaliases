@@ -157,3 +157,16 @@ function normalcolours {
 alias write_rem50='make write_remote_arm-Release-rem50_epra2'
 alias write_pmle='make write_powermodule_arm-Release-pmle_epra1'
 alias write_lak='make write_unidongle_arm-Release-unidongle_epra2'
+
+hash -d mess=~/mess/current/
+
+mess() {
+  set +e
+  DIR=~/mess/$(date +%Y/%V)
+  [[ -d $DIR ]] || {
+    mkdir -p $DIR
+    ln -sfn $DIR ~/mess/current
+    echo "Created $DIR."
+  }
+  cd ~/mess/current
+}
