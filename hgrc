@@ -2,29 +2,21 @@
 username = Phillip DIXON <phil@dixon.gen.nz>
 
 [extensions]
-hgext.graphlog=
-hgext.convert=
-hgk=
-hgext.purge=
-hgext.extdiff=
+graphlog=
 color=
-hgext.fetch=
-prompt=~/dotfiles/lib/prompt.py
 pager=
-# hgext.git=
-bookmarks=
 parentrevspec=
-debugshell=~/dotfiles/lib/debugshell.py
 mq=
+histedit=
+rebase=
+purge=
+strip=
 
 [pager]
 pager = LESS='FSRX' less
 
-[extdiff]
-cmd.opendiff = opendiff -w
-
 [alias]
 nudge = push --rev .
 show = log --color=auto -pr
-slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+slog = log --color=auto --template '{node|short} {desc|firstline}\n'
 sl = slog
