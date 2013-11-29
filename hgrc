@@ -20,3 +20,6 @@ nudge = push --rev .
 show = log --color=auto -pr
 slog = log --color=auto --template '{node|short} {desc|firstline}\n'
 sl = slog
+
+[mq]
+secret = True
