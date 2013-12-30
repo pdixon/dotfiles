@@ -1,8 +1,0 @@
-[Unit]
-Description=xrdb
-Requires=xorg.target
-After=xorg.target
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/xrdb %h/.Xresources

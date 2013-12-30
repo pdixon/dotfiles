@@ -1,6 +1,0 @@
-[Unit]
-Description=Bluetooth Manager Applet
-Requisite=bluetooth.target
-
-[Service]
-ExecStart=@/usr/bin/bluetooth-applet bluetooth-applet

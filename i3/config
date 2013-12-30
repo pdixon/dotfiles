@@ -115,6 +115,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+x move workspace to output up
+
 # reload the configuration file
 bindsym $mod+Shift+j reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -168,6 +170,4 @@ hide_edge_borders vertical
 
 for_window [class="^Chromium$"] border none
 
-exec --no-startup-id urxvt
-exec emacs
-exec chromium
+exec i3-msg workspace 3; i3-msg exec chromium; i3-msg workspace 2; i3-msg exec emacs; i3-msg workspace 1; i3-msg exec urxvt

@@ -1,18 +1,24 @@
 # -*- mode: conf-unix; -*-
 [DEFAULT]
-lib =
-    isLinux() {
-              test "$(uname)" = Linux
-    }
-    isDarwin() {
-              test "$(uname)" = Darwin
-    }
+lib = 
+	   isLinux() {
+	             test "$(uname)" = Linux
+	   }
+	   isDarwin() {
+	             test "$(uname)" = Darwin
+	   }
+
+[ALIAS]
+pull = update
 
 [dotfiles]
 checkout = git clone git@github.com:pdixon/dotfiles.git
 
 [.emacs.d]
 checkout = git clone git@github.com:pdixon/emacs.d.git
+
+[personal/notes]
+checkout = git clone pdixon@dixon.gen.nz:/srv/git/notes.git
 
 [personal/phil.dixon.gen.nz]
 skip = lazy
@@ -25,3 +31,10 @@ checkout = git clone git@github.com:pdixon/pmixer.git
 [personal/src/pdmpkeys]
 skip = ! isDarwin
 checkout = git clone git@github.com:pdixon/pdmpkeys.git
+
+[personal/src/PKGBUILDs]
+skip = ! isLinux
+checkout = git clone 'git@github.com:pdixon/PKGBUILDs.git' 'PKGBUILDs'
+
+[work/training]
+checkout = git clone 'pdixon@dixon.gen.nz:/srv/git/dcl-training.git' 'training'

@@ -120,8 +120,17 @@ setopt hist_ignore_dups
 # Completion
 LISTMAX=0 # ask to complete if top of list would scroll off screen
 
-autoload compinit
-compinit
+zmodload zsh/complist
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' special-dirs ..
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' rehash true
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions'    format $'%{\e[0;31m%}completing %B%d%b%{\e[0m%}'
 
 compdef '_files -g "*.mdwn"' mdwn2html
 compdef '_files -g "*.mdwn"' mdwn2odt

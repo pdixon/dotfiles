@@ -1,6 +1,8 @@
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-    startx -- vt01 &
+# -*- mode: sh; -*-
+
+if [ $(tty) = /dev/tty1 ]; then
+    startx
     logout
-elif [[ $(tty) = /dev/tty2 ]]; then
+elif [ $(tty) = /dev/tty2 ]; then
     tmux
 fi
