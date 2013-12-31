@@ -11,6 +11,7 @@ histedit=
 rebase=
 purge=
 strip=
+patchbomb=
 
 [pager]
 pager = LESS='FSRX' less
