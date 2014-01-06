@@ -154,7 +154,7 @@ bindsym $mod+p mode "resize"
 # finds out, if available)
 bar {
     position top
-    status_command i3status -c ~/.i3/status.cfg
+    status_command j4status
     colors {
         background #3f3f3f
         statusline #dcdccc
