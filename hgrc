@@ -21,6 +21,6 @@ nudge = push --rev .
 show = log --color=auto -pr
 slog = log --color=auto --template '{node|short} {desc|firstline}\n'
 sl = slog
-
+describe = log -r . --template "{latesttag}{ifeq(latesttagdistance,'0','','-{latesttagdistance}-{node|short}')}\n"
 [mq]
 secret = True
