@@ -10,3 +10,8 @@
 (xbindkey '(mod4 F11) "mpc toggle")
 (xbindkey '(mod4 mod1 F11) "music-chose")
 (xbindkey '(mod4 F12) "mpc next")
+
+(xbindkey '(XF86MonBrightnessUp) "xbacklight -inc 5")
+(xbindkey '(XF86MonBrightnessDown) "xbacklight -dec 5")
+
+(xbindkey '(XF86Eject) "eject /dev/cdrom")
