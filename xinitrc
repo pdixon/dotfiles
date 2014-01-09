@@ -13,7 +13,6 @@ setxkbmap -layout dvorak -option ctrl:nocaps
 
 xbindkeys
 
-udiskie &
 nm-applet &
 
 exec i3
