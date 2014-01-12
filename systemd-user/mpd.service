@@ -1,7 +1,0 @@
-[Unit]
-Description=Music Player Daemon
-Requires=pulse.service
-Requires=mpd.socket
-
-[Service]
-ExecStart=/usr/bin/mpd --stdout --no-daemon
