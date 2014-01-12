@@ -12,8 +12,12 @@ xmodmap ~/.Xmodmap
 setxkbmap -layout dvorak -option ctrl:nocaps
 
 xbindkeys
+pulseaudio --start
+
+dropboxd &
 
 nm-applet &
+pasystray &
 
 exec i3
 
