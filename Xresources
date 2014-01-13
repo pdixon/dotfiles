@@ -34,17 +34,14 @@ urxvt*color13:     #ec93d3
 urxvt*color14:     #93e0e3
 urxvt*color15:     #ffffff
 
-Emacs.FontBackend: xft
-Emacs*font: Ubuntu Mono-11
-Emacs.mode-line.attributeFont: Ubuntu Mono-11
-
-URxvt*font: xft:Ubuntu Mono:pixelsize=15,xft:DejaVu Sans Mono
+URxvt*font: xft:Source Code Pro:size=9,xft:DejaVu Sans Mono
 
 URxvt.borderLess: False
 URxvt.reverseVideo: False
 URxvt.scrollBar: False
 URxvt.linespace: 5
 URxvt.internalBorder: 6
+URxvt.letterSpace: -1
 
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
