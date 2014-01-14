@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-chosen=$(mpc list album | dmenu -i -nb "#002b36" -nf "#657b83" -sb "#002b56" -sf "#93a1a1")
+chosen=$(mpc list album | dmenu -i -h 22 -nb "#3f3f3f" -nf "#cc9393" -sb "#3f3f3f" -sf "#f0dfaf" -fn "Source Sans Pro-9")
 
 if [ "$chosen" != "" ]; then
     mpc clear

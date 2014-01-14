@@ -37,7 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+apostrophe kill
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec dmenu_run
+bindsym $mod+e exec dmenu_run -h 22 -nb "#3f3f3f" -nf "#cc9393" -sb "#3f3f3f" -sf "#f0dfaf" -fn "Source Sans Pro-9"
 
 # change focus
 bindsym $mod+h focus left
