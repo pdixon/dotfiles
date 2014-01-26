@@ -5,7 +5,6 @@ username = Phillip DIXON <phil@dixon.gen.nz>
 graphlog=
 color=
 pager=
-parentrevspec=
 mq=
 histedit=
 rebase=
