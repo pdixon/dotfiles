@@ -12,3 +12,18 @@ do
     fi
     ln -s {~/dotfiles/,~/.}"$item"
 done
+
+for item in ~/dotfiles/xdg_config/*
+do
+    base_item=$(basename "$item")
+    target_item=~/.config/"$base_item"
+    if [ -h "$target_item" ]
+    then
+        rm "$target_item"
+    fi
+    if [ -e "$target_item" ]
+    then
+        mv "$target_item"{,.old}
+    fi
+    ln -s $item $target_item
+done
