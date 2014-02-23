@@ -7,12 +7,15 @@ zstyle ':vcs_info:*' max-exports 2
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' use-simple false
+zstyle ':vcs_info:*' get-bookmarks true
 zstyle ':vcs_info:*' enable hg git
 zstyle ':vcs_info:*' unstagedstr "*"
 zstyle ':vcs_info:*' stagedstr "*"
 zstyle ':vcs_info:hg:*' branchformat "%b"
 zstyle ':vcs_info:*' actionformats "%b %.8i %a %c%u" "zsh: %r"
 zstyle ':vcs_info:*' formats       "%b %.8i %c%u"    "zsh: %r"
+zstyle ':vcs_info:hg:*' actionformats "%b %m %.8i %a %c%u" "zsh: %r"
+zstyle ':vcs_info:hg:*' formats       "%b %m %.8i %c%u"    "zsh: %r"
 
 # Prompt set up.
 PROMPT='

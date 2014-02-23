@@ -18,7 +18,7 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose an xft font, such as:
-font pango:DejaVu Sans Mono 10
+font pango:Source Sans Pro 9
 
 # Zenburn colours
 #class                      border  bkgrd   text
@@ -37,7 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+apostrophe kill
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec dmenu_run
+bindsym $mod+e exec dmenu_run -h 22 -nb "#3f3f3f" -nf "#cc9393" -sb "#3f3f3f" -sf "#f0dfaf" -fn "Source Sans Pro-9"
 
 # change focus
 bindsym $mod+h focus left
@@ -154,7 +154,7 @@ bindsym $mod+p mode "resize"
 # finds out, if available)
 bar {
     position top
-    status_command i3status -c ~/.i3/status.cfg
+    status_command j4status
     colors {
         background #3f3f3f
         statusline #dcdccc

@@ -1,0 +1,17 @@
+[Plugins]
+Output=i3bar
+Input=nm;upower;time;
+
+[Time]
+Zones=Pacific/Auckland;
+Format=%Y-%m-%d %H:%M
+
+[NetworkManager]
+Interfaces=eth0;wlan0;
+
+[i3bar]
+NoStateColour= #dcdccc
+UnavailableColour= #656555
+BadColour= #cc9393
+AverageColour= #f0dfaf
+GoodColour= #7f9f7f

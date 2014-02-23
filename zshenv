@@ -19,6 +19,14 @@ else
     path=(~/.cabal/bin $path)
 fi
 
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+	for profile in /etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
+fi
+
 path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
 
 export EDITOR=my-editor
@@ -28,3 +36,7 @@ export LESS="-R"
 export PYTHONSTARTUP=~/dotfiles/pythonrc.py
 
 export NO_AT_BRIDGE=1
+
+if [ -z $LANG ]; then
+    export LANG=en_NZ.UTF-8
+fi

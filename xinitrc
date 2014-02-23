@@ -6,14 +6,19 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     unset f
 fi
 
+eval $(envoy -p)
+systemctl --user set-environment "DISPLAY=$DISPLAY"
+
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 setxkbmap -layout dvorak -option ctrl:nocaps
 
 xbindkeys
+pulseaudio --start
 
-udiskie &
+xcompmgr &
 nm-applet &
+pasystray &
 
 exec i3
 
