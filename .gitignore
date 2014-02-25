@@ -10,3 +10,5 @@ vim/bundle/*
 vim/spell/en.utf-8.add.spl
 
 vim/spell/en.utf-8.add
+
+systemd-user/default.target.wants
