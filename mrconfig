@@ -20,6 +20,14 @@ checkout = git clone git@github.com:pdixon/emacs.d.git
 [personal/notes]
 checkout = git clone pdixon@dixon.gen.nz:/srv/git/notes.git
 
+[personal/org]
+skip = lazy
+checkout = git clone pdixon@dixon.gen.nz:/srv/git/org.git
+
+[personal/band-parts]
+skip = lazy
+checkout = git clone pdixon@dixon.gen.nz:/srv/git/band-parts.git
+
 [personal/phil.dixon.gen.nz]
 skip = lazy
 checkout = git clone git@github.com:pdixon/phil.dixon.gen.nz.git
