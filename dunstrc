@@ -42,7 +42,7 @@
     # the window expands to the longest message displayed.
     # A positive x is measured from the left, a negative from the
     # right side of the screen.  Y is measured from the top and down respectevly.
-    geometry = "0x3-22+22"
+    geometry = "0x3-24+24"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -94,14 +94,14 @@
     # xev might be helpful to find names for keys
 
     # close notification
-    close = ctrl+space
+    #close = ctrl+space
 
     # close all notifications
-    close_all = ctrl+shift+space
+    #close_all = ctrl+shift+space
 
     # redisplay last message(s)
     # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-    history = ctrl+grave
+    history = mod4+grave
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
