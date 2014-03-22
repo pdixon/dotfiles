@@ -1,0 +1,3 @@
+#! /bin/sh
+
+rsync --exclude='*.itlp' --exclude='*.m4v' --exclude='*.pdf' -av --delete "pjd67@staticPhil.local:Music/iTunes/iTunes\ Music/Music/" /media/PocketBrain/music
