@@ -11,7 +11,7 @@ systemctl --user set-environment "DISPLAY=$DISPLAY"
 
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-setxkbmap -layout dvorak -option ctrl:nocaps
+#setxkbmap -layout dvorak -option ctrl:nocaps
 
 xbindkeys
 pulseaudio --start
