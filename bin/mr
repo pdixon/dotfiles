@@ -1,8 +1,8 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 =head1 NAME
 
-mr - a Multiple Repository management tool
+mr - a tool to manage all your version control repos
 
 =head1 SYNOPSIS
 
@@ -24,6 +24,8 @@ B<mr> [options] diff
 
 B<mr> [options] log
 
+B<mr> [options] grep pattern
+
 B<mr> [options] run command [param ...]
 
 B<mr> [options] bootstrap url [directory]
@@ -40,11 +42,11 @@ B<mr> [options] remember action [params ...]
 
 =head1 DESCRIPTION
 
-B<mr> is a Multiple Repository management tool. It can checkout, update, or
-perform other actions on a set of repositories as if they were one combined
-repository. It supports any combination of subversion, git, cvs, mercurial,
-bzr, darcs, fossil and veracity repositories, and support for other version
-control systems can easily be added.
+B<mr> is a tool to manage all your version control repos. It can checkout,
+update, or perform other actions on a set of repositories as if they were
+one combined repository. It supports any combination of subversion, git,
+cvs, mercurial, bzr, darcs, fossil and veracity repositories, and support
+for other version control systems can easily be added.
 
 B<mr> cds into and operates on all registered repositories at or below your
 working directory. Or, if you are in a subdirectory of a repository that
@@ -112,6 +114,11 @@ Show a diff of uncommitted changes.
 =item log
 
 Show the commit log.
+
+=item grep pattern
+
+Searches for a pattern in each repository using the grep subcommand. Uses
+ack-grep on VCS that do not have their own.
 
 =item run command [param ...]
 
@@ -519,7 +526,7 @@ Copyright 2007-2011 Joey Hess <joey@kitenet.net>
 
 Licensed under the GNU GPL version 2 or higher.
 
-http://kitenet.net/~joey/code/mr/
+http://myrepos.branchable.com/
 
 =cut
 
@@ -1318,11 +1325,12 @@ sub loadconfig {
 	while (@lines) {
 		$_=$nextline->();
 
+		next if /^\s*\#/ || /^\s*$/;
+
 		if (! $trusted && /[[:cntrl:]]/) {
 			$trusterror->("illegal control character");
 		}
 
-		next if /^\s*\#/ || /^\s*$/;
 		if (/^\[([^\]]*)\]\s*$/) {
 			$section=$1;
 
@@ -1923,7 +1931,7 @@ hg_fetch = hg pull
 svn_status = svn status "$@"
 git_status = git status -s "$@" || true; git --no-pager log --branches --not --remotes --simplify-by-decoration --decorate --oneline || true
 bzr_status = bzr status --short "$@"; bzr missing
-cvs_status = cvs status "$@"
+cvs_status = cvs -q status | grep -E '^(File:.*Status:|\?)' | grep -v 'Status: Up-to-date'
 hg_status  = hg status "$@"; hg summary --quiet | grep -v 'parent: 0:'
 darcs_status = darcs whatsnew -ls "$@" || true
 fossil_status = fossil changes "$@"
@@ -2082,7 +2090,7 @@ help =
 		SHOWMANFILE="man"
 		;;
 		*)
-		SHOWMANFILE="man -l"
+		SHOWMANFILE="man"
 		;;
 	esac
 	if [ ! -e "$MR_PATH" ]; then
