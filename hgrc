@@ -11,6 +11,7 @@ rebase=
 purge=
 strip=
 patchbomb=
+churn=
 
 [pager]
 pager = LESS='FSRX' less

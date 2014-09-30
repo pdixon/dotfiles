@@ -27,7 +27,7 @@ if test -d /etc/profile.d/; then
 	unset profile
 fi
 
-path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/1.8/bin $path)
+path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/2.0.0/bin $path)
 
 export EDITOR=my-editor
 
