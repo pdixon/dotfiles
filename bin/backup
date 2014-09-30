@@ -3,5 +3,5 @@
 EXCLUDEFILE=~/backup-excludes
 TARFILE=~/$(hostname -s)-$(date "+%Y-%m-%d").tar.gz
 
-cd /home
+cd /Users
 tar -v --create --gzip --one-file-system --exclude-from ${EXCLUDEFILE} -f ${TARFILE} pdixon/
