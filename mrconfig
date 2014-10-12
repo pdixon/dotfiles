@@ -53,3 +53,6 @@ checkout = git clone 'git@github.com:pdixon/monitord.git' 'monitord'
 
 [personal/src/pddb]
 checkout = git clone 'git@github.com:pdixon/pddb' 'pddb'
+
+[personal/src/dimensional]
+checkout = git clone 'git@bitbucket.org:pdixon/dimensional.git' 'dimensional'
