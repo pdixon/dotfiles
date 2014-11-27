@@ -1,9 +1,5 @@
-#! /bin/zsh
+#!/bin/sh
 
-if [[ `uname` == "Darwin" ]]; then
-    EMACSCLIENT='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-else
-    EMACSCLIENT=emacsclient
-fi
+EMACSCLIENT=emacsclient
 
 exec $EMACSCLIENT -a "" $@
