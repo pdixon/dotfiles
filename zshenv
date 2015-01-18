@@ -12,9 +12,7 @@ if [[ `hostname` == "pddev3" ]]; then
 fi
 
 if [[ `uname` == "Darwin" ]]; then
-    path=(/usr/texbin ~/Library/Python/2.7/bin /opt/homebrew/bin ~/Library/Haskell/bin $path)
-    manpath=(/opt/homebrew/share/man $manpath)
-    export LUA_PATH="/opt/homebrew/share/lua/5.1/?.lua;;"
+    path=(/usr/texbin $path)
 else
     path=(~/.cabal/bin $path)
 fi
