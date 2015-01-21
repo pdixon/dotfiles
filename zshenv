@@ -27,6 +27,8 @@ fi
 
 path=(~/dotfiles/bin ~/bin ~/.local/bin ~/.gem/ruby/2.0.0/bin $path)
 
+fpath=(/usr/local/share/zsh/site_functions $fpath)
+
 export EDITOR=my-editor
 
 export LESS="-R"
