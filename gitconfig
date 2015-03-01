@@ -31,4 +31,4 @@
 [diff]
 	renames = copies
 [push]
-	default = matching
+	default = simple
