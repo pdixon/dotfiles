@@ -1,15 +1,48 @@
 [general]
-accounts = Gmail
+accounts = dixon.gen.nz
 maxsyncaccounts = 1
+ui = ttyui
 
-[Account Gmail]
-localrepository = Local
-remoterepository = Remote
+[Account dixon.gen.nz]
+localrepository = dixon.gen.nz-local
+remoterepository = dixon.gen.nz-remote
+status_backend = sqlite
 
-[Repository Local]
+[Repository dixon.gen.nz-local]
 type = Maildir
-localfolders = ~/Maildir
+localfolders = ~/.mail/dixon.gen.nz
+nametrans = lambda folder: {'drafts'       : '[Gmail]/Drafts',
+                            'sent'         : '[Gmail]/Sent Mail',
+                            'trash'        : '[Gmail]/Trash',
+                            'archive'      : '[Gmail]/All Mail',
+                            'transactions' : 'Transactions',
+                            'bacon'        : 'Bacon',
+                            'inbox'        : 'INBOX',
+                            }.get(folder, folder)
 
-[Repository Remote]
+[Repository dixon.gen.nz-remote]
+maxconnections = 5
 type = Gmail
 remoteuser = phil@dixon.gen.nz
+sslcacertfile = ~/mess/current/usr/share/ca-certificates/trust-source/mozilla.trust.crt
+#readonly = yes
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts'    : 'drafts',
+                            '[Gmail]/Sent Mail' : 'sent',
+                            '[Gmail]/Trash'     : 'trash',
+                            '[Gmail]/All Mail'  : 'archive',
+                            'Transactions'      : 'transactions',
+                            'Bacon'             : 'bacon',
+                            'INBOX'             : 'inbox',
+                            }.get(folder, folder)
+
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Gmail]/Starred',
+                                             '[Gmail]/All Mail',
+                                             'Notes',
+                                             'Lists',
+                                             "St C's",
+                                             '_Reference',
+                                             ]
