@@ -59,3 +59,11 @@ checkout = git clone 'git@bitbucket.org:pdixon/dimensional.git' 'dimensional'
 
 [personal/src/cpp-incubator]
 checkout = git clone 'git@bitbucket.org:pdixon/cpp-incubator.git' 'cpp-incubator'
+
+[personal/src/mpDris2]
+skip = ! isLinux
+checkout = git clone 'git@github.com:pdixon/mpDris2.git' 'mpDris2'
+
+[personal/src/gonepass]
+skip = ! isLinux
+checkout = git clone 'git@github.com:pdixon/gonepass.git' 'gonepass'
