@@ -67,3 +67,7 @@ checkout = git clone 'git@github.com:pdixon/mpDris2.git' 'mpDris2'
 [personal/src/gonepass]
 skip = ! isLinux
 checkout = git clone 'git@github.com:pdixon/gonepass.git' 'gonepass'
+
+[personal/nbsb-music]
+skip = lazy
+checkout = git clone 'git@bitbucket.org:newbrightonsilverband/new-brighton-silver-band-music.git' 'nbsb-music'
