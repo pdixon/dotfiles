@@ -71,3 +71,6 @@ checkout = git clone 'git@github.com:pdixon/gonepass.git' 'gonepass'
 [personal/nbsb-music]
 skip = lazy
 checkout = git clone 'git@bitbucket.org:newbrightonsilverband/new-brighton-silver-band-music.git' 'nbsb-music'
+
+[personal/src/site-design]
+checkout = git clone 'git@bitbucket.org:pdixon/personal-site-design.git' 'site-design'
