@@ -74,3 +74,9 @@ checkout = git clone 'git@bitbucket.org:newbrightonsilverband/new-brighton-silve
 
 [personal/src/site-design]
 checkout = git clone 'git@bitbucket.org:pdixon/personal-site-design.git' 'site-design'
+
+[personal/src/ble-loco]
+checkout = git clone 'git@bitbucket.org:pdixon/ble-loco.git' 'ble-loco'
+
+[personal/src/fixed]
+checkout = git clone 'git@bitbucket.org:pdixon/fixed.git' 'fixed'
