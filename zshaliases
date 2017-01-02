@@ -85,3 +85,10 @@ mess() {
   }
   cd ~/mess/current
 }
+
+function workon {
+  export VIRTUAL_ENV="$PWD/$1"
+  path=($VIRTUAL_ENV $path)
+  unset PYTHON_HOME
+  $SHELL
+}
