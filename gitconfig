@@ -1,6 +1,9 @@
 [user]
-	name = Phillip Dixon
+        name = Phillip Dixon
         email = phil@dixon.gen.nz
+
+[credential]
+        helper = osxkeychain
 
 [color]
         diff = auto
@@ -22,13 +25,23 @@
         user = phil@dixon.gen.nz
 
 [alias]
-    st = status --short
-    ci = commit
-    co = checkout
-    sl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
-    gl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
+        st = status --short
+        ci = commit
+        co = checkout
+        sl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+        gl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
 
 [diff]
-	renames = copies
+        renames = copies
+
 [push]
-	default = simple
+        default = simple
+
+[versionsort]
+        prereleaseSuffix = -beta
+        prereleaseSuffix = -rc
+        prereleaseSuffix = -es
+        prereleaseSuffix = -alpha
+
+[tag]
+        sort = version:refname
