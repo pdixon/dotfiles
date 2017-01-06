@@ -1,4 +1,11 @@
 # -*- mode: sh; -*-
+
+typeset -U path
+
+if [[ ${+path[path[(i)$HOME/dotfiles/bin]]} -eq 0 ]]; then
+    path=(~/dotfiles/bin ~/bin $path)
+fi
+
 setopt prompt_subst
 
 autoload -U vcs_info
