@@ -1,8 +1,0 @@
-[Unit]
-Description=run dropbox
-
-[Service]
-ExecStart=/usr/bin/dropboxd
-
-[Install]
-WantedBy=default.target
