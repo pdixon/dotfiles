@@ -88,7 +88,7 @@ mess() {
 
 function workon {
   export VIRTUAL_ENV="$PWD/$1"
-  path=($VIRTUAL_ENV $path)
+  path=($VIRTUAL_ENV/bin $path)
   unset PYTHON_HOME
   $SHELL
 }
