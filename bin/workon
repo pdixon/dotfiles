@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export VIRTUAL_ENV="$PWD/venv"
+
+if [ ! -d "$VIRTUAL_ENV" ]; then
+    echo "./venv doesn't exist, can't work on it"
+    exit -1
+fi
+
+
+export PATH=$VIRTUAL_ENV/bin:$PATH
+unset PYTHON_HOME
+
+exec "${@:-$SHELL}"
