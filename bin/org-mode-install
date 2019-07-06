@@ -1,7 +1,0 @@
-#! /bin/bash
-
-cd ~/src/org-mode
-make install
-make install-info
-cd contrib
-cp -R babel lisp ~/.emacs.d/vendor/org/
