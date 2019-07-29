@@ -1,0 +1,38 @@
+general {
+        colors = true
+        color_good = "#99cc99"
+        color_degraded = "#f99157"
+        color_bad = "#f2777a"
+        interval = 15
+}
+
+order += "wireless wlp1s0"
+order += "battery 0"
+order += "volume master"
+order += "load"
+order += "time"
+
+wireless wlp1s0 {
+         format_up = "%essid %quality %bitrate %frequency"
+         format_down = "no wifi"
+}
+
+volume master {
+       format = "♪: %volume"
+       format_muted = "♪: muted (%volume)"
+       device = "pulse:0"
+}
+
+battery 0 {
+        format = "%status %percentage"
+}
+
+time {
+        format = "%Y-%m-%d %H:%M"
+}
+
+load {
+        format = "%1min"
+}
+
+
