@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
 
-chosen=$(mpc list album | dmenu -i -h 22 -nb "#3f3f3f" -nf "#cc9393" -sb "#3f3f3f" -sf "#f0dfaf" -fn "Source Sans Pro-9")
+chosen=$(mpc list album | bemenu -i -p 'Album:' --fn 'Source Code Pro 10.0' --tf '#7aa6da' --hf '#7aa6da')
 
 if [ "$chosen" != "" ]; then
     mpc clear
