@@ -1,0 +1,3 @@
+#! /bin/sh
+
+BEMENU_BACKEND=wayland MOZ_ENABLE_WAYLAND=1 exec systemd-cat -t sway sway
