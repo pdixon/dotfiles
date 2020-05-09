@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec bemenu -i -p $1 --fn 'Source Code Pro 10.0' --tf '#7aa6da' --hf '#7aa6da'
