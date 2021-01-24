@@ -1,3 +1,7 @@
 #! /bin/sh
 
-BEMENU_BACKEND=wayland MOZ_ENABLE_WAYLAND=1 exec systemd-cat -t sway sway
+BEMENU_BACKEND=wayland \
+              MOZ_ENABLE_WAYLAND=1 \
+              MPD_HOST=$XDG_RUNTIME_DIR/mpd/socket \
+              SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket \
+              exec systemd-cat -t sway sway

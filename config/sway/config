@@ -21,7 +21,7 @@ set $base0F #a3685a
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run -i -p 'exec:' --fn 'Source Code Pro 10.0' | xargs swaymsg exec
+set $menu bemenu-run -i -p 'exec:' --fn 'Source Code Pro 10.0' --tf '#7aa6da' --hf '#7aa6da' | xargs swaymsg exec
 
 default_border pixel 2
 
@@ -46,16 +46,18 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
 
 # backlight controls
-bindsym $mod+F6 exec light -U 10
-bindsym $mod+F7 exec light -A 10
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight -e s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight -e s +10%
 
 # audio controls
-bindsym $mod+F8 exec pactl set-sink-mute 0 toggle
-bindsym $mod+F9 exec pactl set-sink-volume 0 -5%
-bindsym $mod+F10 exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # music
 bindsym $mod+F3 exec mpc toggle
+bindsym XF86AudioPlay exec mpc toggle
 
 #
 # Moving around:
@@ -164,28 +166,24 @@ bar {
     }
 }
 
-input "0:0:Cypress_APA_Trackpad_(cyapa)" {
+input "type:touchpad" {
       scroll_method two_finger
       natural_scroll enabled
       tap enabled
 }
 
-input "1133:16449:Logitech_MX_Master" {
+input "type:mouse" {
       natural_scroll enabled
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-      xkb_layout dvorak
-
-      #It'd be nice to use this but then I lose the function keys
-      #xkb_model chromebook
+input "type:pointer" {
+      natural_scroll enabled
 }
 
-input "1241:642:USB-HID_Keyboard" {
+input "type:keyboard" {
       xkb_layout dvorak
       xkb_options ctrl:nocaps
 }
 
-# TODO: sway v1.2 use --reload so the output stays off when we reload 
-bindswitch --locked lid:on output eDP-1 disable
-bindswitch --locked lid:off output eDP-1 enable
+#bindswitch --reload --locked lid:on output eDP-1 disable
+#bindswitch --reload --locked lid:off output eDP-1 enable
