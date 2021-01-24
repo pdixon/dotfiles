@@ -1,9 +1,9 @@
 #!/bin/bash
 
-chosen=$(mpc list album | bemenu -i -p 'Album:' --fn 'Source Code Pro 10.0' --tf '#7aa6da' --hf '#7aa6da')
+chosen=$(mpc list album | wofi --insensitive --prompt 'Choose Album' --dmenu)
 
 if [ "$chosen" != "" ]; then
-    mpc clear
+    mpc crop
     mpc search album "$chosen" | mpc add
     mpc play
 fi
