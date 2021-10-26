@@ -3,7 +3,7 @@
 typeset -U path
 
 if [[ ${+path[path[(i)$HOME/dotfiles/bin]]} -eq 0 ]]; then
-    path=(~/dotfiles/bin ~/bin ~/.cargo/bin $path)
+    path=(~/dotfiles/bin ~/bin ~/.cargo/bin ~/.local/bin /opt/homebrew/bin $path)
 fi
 
 setopt prompt_subst
