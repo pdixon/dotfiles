@@ -6,25 +6,26 @@ general {
         interval = 15
 }
 
-order += "wireless wlp1s0"
-order += "battery 0"
+order += "wireless wlan0"
+order += "battery all"
 order += "volume master"
 order += "load"
 order += "time"
 
-wireless wlp1s0 {
+wireless wlan0 {
          format_up = "%essid %quality %bitrate %frequency"
          format_down = "no wifi"
 }
 
 volume master {
-       format = "♪: %volume"
-       format_muted = "♪: muted (%volume)"
-       device = "pulse:0"
+       format = "♪: %devicename %volume"
+       format_muted = "♪: %devicename "
+       device = "default"
 }
 
-battery 0 {
-        format = "%status %percentage"
+battery all {
+        format = "%status %percentage (%remaining)"
+	integer_battery_capacity = true
 }
 
 time {
