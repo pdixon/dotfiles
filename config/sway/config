@@ -136,6 +136,8 @@ exec swayidle -w \
    lock 'swaylock -f -c 000000'
 bindsym $mod+Shift+l exec loginctl lock-session
 
+exec mako
+
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0D
@@ -185,5 +187,9 @@ input "type:keyboard" {
       xkb_options ctrl:nocaps
 }
 
-#bindswitch --reload --locked lid:on output eDP-1 disable
-#bindswitch --reload --locked lid:off output eDP-1 enable
+input "type:touch" {
+      map_to_output eDP-1
+}
+
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
