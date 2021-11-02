@@ -13,7 +13,7 @@ do
     ln -s {~/dotfiles/,~/.}"$item"
 done
 
-for item in ~/dotfiles/xdg_config/*
+for item in ~/dotfiles/config/*;
 do
     base_item=$(basename "$item")
     target_item=~/.config/"$base_item"
