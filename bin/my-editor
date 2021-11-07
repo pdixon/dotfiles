@@ -1,5 +1,10 @@
 #!/bin/sh
 
-EMACSCLIENT=emacsclient
+if [[ `uname` == "Darwin" ]]
+then
+    EMACSCLIENT=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+else
+    EMACSCLIENT=emacsclient
+fi
 
 exec $EMACSCLIENT -a "" $@
