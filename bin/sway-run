@@ -3,5 +3,7 @@
 BEMENU_BACKEND=wayland \
               MOZ_ENABLE_WAYLAND=1 \
               MPD_HOST=$XDG_RUNTIME_DIR/mpd/socket \
-              SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket \
+              QT_QPA_PLATFORM=wayland \
+              SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock \
+              XDG_CURRENT_DESKTOP=sway \
               exec systemd-cat -t sway sway

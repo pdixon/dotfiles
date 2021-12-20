@@ -137,6 +137,7 @@ exec swayidle -w \
 bindsym $mod+Shift+l exec loginctl lock-session
 
 exec mako
+exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY"
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
