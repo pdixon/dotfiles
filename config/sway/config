@@ -1,5 +1,5 @@
 set $mod Mod4
-set $term alacritty
+set $term foot
 
 ## Tomorrow Night Eighties Colors
 set $base00 #2d2d2d
