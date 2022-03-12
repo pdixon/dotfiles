@@ -1,0 +1,28 @@
+icons = "awesome5"
+
+[theme]
+name = "native"
+
+[[block]]
+block = "net"
+format = "{ssid} {signal_strength} {bitrate} {frequency}"
+interval = 5
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage} {time} {power}"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+
+[[block]]
+block = "load"
+format = "{1m}"
+interval = 5
+
+[[block]]
+block = "time"
+format = "%a %Y-%m-%d %H:%M"
+interval = 60
