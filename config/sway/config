@@ -1,15 +1,17 @@
 set $mod Mod4
 set $term foot
 
-## Tomorrow Night Eighties Colors
+## Base16 Eighties
+# Author: Chris Kempson (http://chriskempson.com)
+
 set $base00 #2d2d2d
 set $base01 #393939
 set $base02 #515151
-set $base03 #999999
-set $base04 #b4b7b4
-set $base05 #cccccc
-set $base06 #e0e0e0
-set $base07 #ffffff
+set $base03 #747369
+set $base04 #a09f93
+set $base05 #d3d0c8
+set $base06 #e8e6df
+set $base07 #f2f0ec
 set $base08 #f2777a
 set $base09 #f99157
 set $base0A #ffcc66
@@ -17,7 +19,7 @@ set $base0B #99cc99
 set $base0C #66cccc
 set $base0D #6699cc
 set $base0E #cc99cc
-set $base0F #a3685a
+set $base0F #d27b53
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
