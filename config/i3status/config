@@ -26,6 +26,8 @@ volume master {
 battery all {
         format = "%status %percentage (%remaining %consumption)"
 	integer_battery_capacity = true
+        status_chr = 🔌
+        status_bat = 🔋
 }
 
 time {
