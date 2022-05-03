@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(mpc list album | wofi --insensitive --prompt 'Choose Album' --dmenu)
+chosen=$(mpc list album | fuzzel -w 80 -D no --dmenu)
 
 if [ "$chosen" != "" ]; then
     mpc crop

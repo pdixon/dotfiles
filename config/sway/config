@@ -23,7 +23,7 @@ set $base0F #d27b53
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run -i -p 'exec:' --fn 'Source Code Pro 10.0' --tf '#7aa6da' --hf '#7aa6da' | xargs swaymsg exec
+set $menu fuzzel --dpi-aware=no --show-actions --width=60 --launch-prefix="swaymsg exec --"
 
 default_border pixel 2
 
