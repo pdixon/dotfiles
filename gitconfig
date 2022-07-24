@@ -31,6 +31,8 @@
         co = checkout
         sl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
         gl = log --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
+        review-log = log --merges --pretty='format:%C(yellow)%h%Creset %cs %C(dim)%s%Creset %(trailers:valueonly,key=Approved-By,separator=%x2C )'
+        ticket-log = log --no-merges --pretty='format:%C(yellow)%h%Creset %as %cs %aN %C(dim)%s%Creset %(trailers:valueonly,key=Ticket,separator=%x2C )'
 
 [diff]
         renames = copies
@@ -55,5 +57,6 @@
 
 [pull]
 	rebase = true
+
 [includeIf "gitdir:~/work/"]
         path = ~/dotfiles/gitconfig-work
