@@ -12,4 +12,3 @@ export NO_AT_BRIDGE=1
 if [ -z $LANG ]; then
     export LANG=en_NZ.UTF-8
 fi
-. "$HOME/.cargo/env"
