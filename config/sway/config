@@ -28,6 +28,7 @@ set $menu fuzzel --dpi-aware=no --show-actions --width=60 --launch-prefix="swaym
 default_border pixel 2
 
 for_window [app_id="^pinentry-qt$"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky enable, border none
 
 # start a terminal
 bindsym $mod+Return exec $term
