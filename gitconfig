@@ -48,6 +48,7 @@
         prereleaseSuffix = -rc
         prereleaseSuffix = -es
         prereleaseSuffix = -alpha
+        prereleaseSuffix = -dev
 
 [tag]
         sort = version:refname
