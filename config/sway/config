@@ -205,8 +205,13 @@ input "type:touch" {
       map_to_output eDP-1
 }
 
+output "eDP-1" {
+       position 0 0
+}
+
 output "Dell Inc. DELL P2415Q 866H65BL09NL" {
        scale 2
+       position 0 -1080
 }
 
 bindswitch --reload --locked lid:on output eDP-1 disable
