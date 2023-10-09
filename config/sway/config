@@ -116,13 +116,14 @@ bindsym $mod+F3 exec playerctl play-pause
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+o split toggle
+    bindsym $mod+Shift+o split none
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+e layout toggle splith splitv tabbed
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -133,8 +134,6 @@ bindsym $mod+F3 exec playerctl play-pause
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
 
-    # move focus to the parent container
-    bindsym $mod+a focus parent
 
 ### Idle configuration
 exec swayidle -w \
