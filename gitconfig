@@ -44,11 +44,11 @@
         default = simple
 
 [versionsort]
-        prereleaseSuffix = -beta
-        prereleaseSuffix = -rc
-        prereleaseSuffix = -es
-        prereleaseSuffix = -alpha
-        prereleaseSuffix = -dev
+        suffix = -alpha
+        suffix = -dev
+        suffix = -beta
+        suffix = -es
+        suffix = -rc
 
 [tag]
         sort = version:refname
