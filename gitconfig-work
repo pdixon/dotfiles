@@ -1,2 +1,5 @@
 [user]
-	email = pdixon@dynamiccontrols.com
+        email = pdixon@dynamiccontrols.com
+
+[bitbucket]
+	user = pdixon_dcl
