@@ -1,5 +1,5 @@
 set $mod Mod4
-set $term foot
+set $term ghostty
 
 ## Base16 Eighties
 # Author: Chris Kempson (http://chriskempson.com)
