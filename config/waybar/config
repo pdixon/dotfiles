@@ -1,0 +1,54 @@
+{
+  "fixed-center": true,
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+  "modules-center": ["group/titles"],
+  "modules-right": ["network", "bluetooth", "battery", "wireplumber", "cpu", "tray", "clock"],
+  "group/titles": {
+    "orientation": "vertical",
+    "modules": ["mpris", "sway/window"]
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}% ({time} {power:3.2g}W)",
+    "format-time": "{H}:{m}",
+    "format-charging": " {capacity}% ({time} {power:3.2g}W)",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""],
+    "weighted-average": true
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M}"
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "player-icons": {
+      "default": "▶",
+      "mpd": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "dynamic-len": 50
+    // "ignored-players": ["firefox"]
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "  {essid} {signalStrength}% {frequency}GHz", // Icon: wifi
+    "format-ethernet": "  {ifname}", // Icon: ethernet
+    "format-disconnected": "⚠  Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr} {bandwidthUpBytes} {bandwidthDownBytes}"
+  },
+  "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+}
